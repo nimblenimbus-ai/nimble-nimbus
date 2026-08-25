@@ -260,17 +260,6 @@ function Home() {
         <div className="hero-video-shade" aria-hidden="true" />
         <div className="hero-noise" aria-hidden="true" />
         <div className="sun" aria-hidden="true" />
-        <div className="cloud cloud-one" aria-hidden="true" />
-        <div className="cloud cloud-two" aria-hidden="true" />
-        <div className="cloud cloud-three" aria-hidden="true" />
-        <div className="skyline" aria-hidden="true">
-          <div className="skyline-back">
-            {Array.from({ length: 14 }, (_, index) => <span className="building" key={`back-${index}`} />)}
-          </div>
-          <div className="skyline-front">
-            {Array.from({ length: 14 }, (_, index) => <span className="building" key={`front-${index}`} />)}
-          </div>
-        </div>
         <div className="hero-inner">
           <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent creative studio</div>
           <h1 className="hero-title display reveal visible delay-1" data-testid="text-hero-title">
