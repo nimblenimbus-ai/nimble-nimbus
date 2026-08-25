@@ -1,4 +1,4 @@
-import { type FormEvent, type ReactNode, useEffect, useState } from 'react';
+import { type FormEvent, type ReactNode, useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -113,6 +113,9 @@ function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
   const [formSent, setFormSent] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const videoDurationRef = useRef(0);
 
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('.reveal');
@@ -141,6 +144,52 @@ function Home() {
       document.body.style.overflow = '';
     };
   }, [activeProject]);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    const video = heroVideoRef.current;
+    if (!hero || !video) return undefined;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+
+    const scrubVideo = () => {
+      frame = 0;
+      if (reducedMotion.matches || !videoDurationRef.current) return;
+
+      const scrollRange = Math.max(hero.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(
+        1,
+        Math.max(0, (window.scrollY - hero.offsetTop) / scrollRange),
+      );
+      const nextTime = progress * Math.max(videoDurationRef.current - 0.08, 0);
+
+      if (Math.abs(video.currentTime - nextTime) > 0.015) {
+        video.currentTime = nextTime;
+      }
+    };
+
+    const requestScrub = () => {
+      if (!frame) frame = window.requestAnimationFrame(scrubVideo);
+    };
+    const handleMetadata = () => {
+      videoDurationRef.current = Number.isFinite(video.duration) ? video.duration : 0;
+      requestScrub();
+    };
+
+    video.pause();
+    video.addEventListener('loadedmetadata', handleMetadata);
+    window.addEventListener('scroll', requestScrub, { passive: true });
+    window.addEventListener('resize', requestScrub);
+    if (video.readyState >= 1) handleMetadata();
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      video.removeEventListener('loadedmetadata', handleMetadata);
+      window.removeEventListener('scroll', requestScrub);
+      window.removeEventListener('resize', requestScrub);
+    };
+  }, []);
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -190,7 +239,25 @@ function Home() {
         </button>
       </div>
 
-      <section className="hero" id="top" data-testid="section-hero">
+      <section className="hero" id="top" ref={heroRef} data-testid="section-hero">
+        <div className="hero-video-wrap" aria-hidden="true">
+          <video
+            ref={heroVideoRef}
+            className="hero-video"
+            src="/cloudline-sunset.mp4"
+            muted
+            playsInline
+            preload="auto"
+            onLoadedMetadata={() => {
+              if (heroVideoRef.current) {
+                videoDurationRef.current = Number.isFinite(heroVideoRef.current.duration)
+                  ? heroVideoRef.current.duration
+                  : 0;
+              }
+            }}
+          />
+        </div>
+        <div className="hero-video-shade" aria-hidden="true" />
         <div className="hero-noise" aria-hidden="true" />
         <div className="sun" aria-hidden="true" />
         <div className="cloud cloud-one" aria-hidden="true" />
