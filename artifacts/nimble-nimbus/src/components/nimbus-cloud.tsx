@@ -41,6 +41,9 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
       const loader = new GLTFLoader();
 
       let loadedScene: any = null;
+      let isAscending = false;
+      let hasAscended = false;
+      let ascensionStartTime = 0;
 
       const updateScroll = () => {
         if (!mount || !cloudGroup) return;
@@ -56,7 +59,6 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
         const startY = aspect > 1.2 ? 0.36 : aspect > 0.85 ? 0.36 : 0.44;
         const endY = aspect > 1.2 ? -0.22 : aspect > 0.85 ? -0.18 : -0.12;
         const startX = aspect > 1.2 ? 0.26 : aspect > 0.85 ? 0.18 : 0.08;
-        const endX = aspect > 1.2 ? 0.26 : aspect > 0.85 ? 0.18 : 0.08;
 
         const scrollY = window.scrollY;
         const thesisEl = document.querySelector('[data-testid="section-thesis"]');
@@ -72,16 +74,20 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
 
         if (!reduceMotion) {
           if (rawProgress >= 1) {
-            cloudGroup.position.x = startX;
-            cloudGroup.position.y = startY;
+            if (!hasAscended && !isAscending) {
+              isAscending = true;
+              hasAscended = true;
+              ascensionStartTime = performance.now();
+            }
           } else {
-            cloudGroup.position.x = startX + (endX - startX) * progress;
+            hasAscended = false;
+            isAscending = false;
+            cloudGroup.position.x = startX;
             cloudGroup.position.y = startY + (endY - startY) * progress;
+            const opacity = Math.max(0, Math.min(1, 1 - progress));
+            mount.style.opacity = String(opacity);
           }
         }
-
-        const opacity = Math.max(0, Math.min(1, 1 - progress));
-        mount.style.opacity = String(opacity);
       };
 
       const resize = () => {
@@ -106,6 +112,29 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
       };
       const render = (time: number) => {
         if (disposed || !renderer) return;
+
+        if (isAscending && !reduceMotion) {
+          const width = mount?.clientWidth || 1;
+          const height = mount?.clientHeight || 1;
+          const aspect = width / height;
+          const startY = aspect > 1.2 ? 0.36 : aspect > 0.85 ? 0.36 : 0.44;
+          const endY = aspect > 1.2 ? -0.22 : aspect > 0.85 ? -0.18 : -0.12;
+
+          const elapsed = time - ascensionStartTime;
+          const riseProgress = Math.min(1, Math.max(0, elapsed / 1800));
+          const ease = 1 - Math.pow(1 - riseProgress, 3);
+
+          cloudGroup.position.y = endY + (startY - endY) * ease;
+          const floatOpacity = 0.65 * Math.sin(riseProgress * Math.PI);
+          if (mount) mount.style.opacity = String(floatOpacity);
+
+          if (riseProgress >= 1) {
+            isAscending = false;
+            cloudGroup.position.y = startY;
+            if (mount) mount.style.opacity = '0';
+          }
+        }
+
         if (!reduceMotion) {
           const targetRotY = 0.18 + pointer.x;
           const targetRotX = -0.08 + pointer.y;

@@ -307,7 +307,7 @@ function Home() {
           <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The incubator / Point of view</span></div>
           <div className="thesis-layout">
             <div>
-              <h2 className="section-heading display reveal">The nimblest path<br />between <em>spark</em><br />and <em>signal.</em></h2>
+              <h2 className="section-heading display reveal">The nimble path<br />between <em>spark</em><br />and <em>signal.</em></h2>
               <div className="thesis-copy reveal delay-1"><p>Most good ideas do not need a committee. They need a clear read, a fast first move, and enough room to become themselves.</p><p>We work with people who can see the shape of what should exist — then help give it altitude.</p></div>
             </div>
             <p className="thesis-note reveal delay-2">Less ceremony.<br /><span>More lift.</span></p>
