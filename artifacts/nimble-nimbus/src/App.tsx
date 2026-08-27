@@ -302,7 +302,7 @@ function Home() {
       </section>
 
       <section className="section home-thesis" data-testid="section-thesis">
-        <span className="field-number" aria-hidden="true"></span>
+        <span className="field-number" aria-hidden="true">00</span>
         <div className="section-inner">
           <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The incubator / Point of view</span></div>
           <div className="thesis-layout">
