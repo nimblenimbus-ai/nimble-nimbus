@@ -21,7 +21,7 @@ const navItems = [
 const pathSteps = [
   ['01', 'Discover', 'Name the real question before anyone starts decorating the answer.'],
   ['02', 'Prototype', 'Make the smallest convincing thing, then put it in the hands of people who matter.'],
-  ['03', 'Incubate', 'Stay close through the messy middle until the idea can stand on its own.'],
+  ['03', 'Accelerate', 'Turn the battle tested prototype into a working MVP, driving it forward until the idea proves it belongs.'],
   ['04', 'Connect', 'Bring in the exact talent, taste, and reach the next chapter needs.'],
 ] as const;
 
@@ -286,7 +286,7 @@ function Home() {
         <div className="hero-noise" aria-hidden="true" />
         <NimbusCloud />
         <div className="hero-inner">
-          <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent venture incubator</div>
+          <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent Idea Lab & Accelerator</div>
           <div className="hero-copy">
             <h1 className="hero-title display reveal visible delay-1" data-testid="text-hero-title">
               <span>Make altitude</span>
@@ -297,7 +297,7 @@ function Home() {
         </div>
         <div className="hero-meta">
           <span className="scroll-cue mono" data-testid="text-scroll-cue"><span className="scroll-line" aria-hidden="true" />Scroll to explore</span>
-          <span className="hero-meta-right mono">Turning complex problems into real, working solutions.<br />Enterprise experience. Startup speed.</span>
+          <span className="hero-meta-right mono">Turning complex problems into working solutions.<br />Enterprise experience. Startup speed.</span>
         </div>
       </section>
 
@@ -321,7 +321,7 @@ function Home() {
           <div className="path-intro">
             <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The nimble path</span></div>
             <h2 className="display reveal"><span className="line-break">From <em>idea</em></span><br /><span className="line-break">to <em>reality.</em></span></h2>
-            <p className="reveal delay-1">One incubator, four ways to get an idea moving. Start where the uncertainty is highest.</p>
+            <p className="reveal delay-1">One spark, four ways to bring an idea to life. Start where the uncertainty is highest.</p>
           </div>
           <div className="path-list">
             {pathSteps.map(([number, title, description]) => (
