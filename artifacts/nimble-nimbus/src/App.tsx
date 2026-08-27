@@ -319,8 +319,8 @@ function Home() {
       <section className="section home-path" data-testid="section-path">
         <div className="section-inner path-layout">
           <div className="path-intro">
-            <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The nimblest path</span></div>
-            <h2 className="display reveal">From <em>idea</em><br />to<br /><em>reality.</em></h2>
+            <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The nimble path</span></div>
+            <h2 className="display reveal"><span className="line-break">From <em>idea</em></span><br /><span className="line-break">to <em>reality.</em></span></h2>
             <p className="reveal delay-1">One incubator, four ways to get an idea moving. Start where the uncertainty is highest.</p>
           </div>
           <div className="path-list">

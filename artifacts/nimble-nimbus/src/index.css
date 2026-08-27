@@ -404,6 +404,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .home-path { background: var(--canvas-bottom); }
 .path-layout { display: grid; grid-template-columns: .75fr 1.7fr; gap: 8vw; }
+.line-break { display: inline-block; white-space: nowrap; }
 .path-intro h2 { font-size: clamp(47px, 6.8vw, 98px); line-height: .86; }
 .path-intro p { max-width: 220px; margin: 33px 0 0; font-size: 14px; font-weight: 600; line-height: 1.55; }
 .path-list { border-top: 1px solid var(--line); }
@@ -598,6 +599,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .thesis-layout, .path-layout, .editorial-split, .lab-sprint, .insights-lead { display: block; }
   .thesis-copy { margin-top: 70px; }
   .thesis-note { margin-top: 50px; }
+  .path-intro h2 { font-size: clamp(38px, 9.5vw, 62px); line-height: .95; }
   .path-intro p { margin-bottom: 62px; }
   .path-step { grid-template-columns: 42px 1fr; gap: 12px; }
   .path-step p { grid-column: 2; margin-top: -3px; }
