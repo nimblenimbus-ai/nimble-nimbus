@@ -328,16 +328,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .display em, .section-heading em, .page-title em, .hero-title em, .contact-heading em, .path-intro h2 em, .quote-mark em { color: var(--accent); font-style: normal; }
 .blue-field { background: linear-gradient(145deg, var(--canvas-bottom), #1c4d8d); }
 .deep-field { background: var(--canvas-top); }
-.field-number {
+.field-logo {
   position: absolute;
-  top: 2%;
-  right: 4%;
-  color: rgba(142,197,252,.28);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(190px, 30vw, 470px);
-  font-weight: 600;
-  letter-spacing: -.13em;
-  line-height: .8;
+  top: 5%;
+  right: 5%;
+  width: clamp(160px, 26vw, 420px);
+  height: auto;
+  opacity: 0.18;
   z-index: 0;
   pointer-events: none;
   user-select: none;
