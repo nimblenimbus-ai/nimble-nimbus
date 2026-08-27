@@ -1,9 +1,5 @@
 {
   "name": "nimble-nimbus",
-  "main": "./_worker.js",
-  "compatibility_date": "2026-08-27",
-  "assets": {
-    "directory": "./artifacts/nimble-nimbus/dist/public",
-    "binding": "ASSETS"
-  }
+  "pages_build_output_dir": "./artifacts/nimble-nimbus/dist/public",
+  "compatibility_date": "2026-08-27"
 }
