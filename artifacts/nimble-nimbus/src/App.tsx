@@ -297,7 +297,7 @@ function Home() {
         </div>
         <div className="hero-meta">
           <span className="scroll-cue mono" data-testid="text-scroll-cue"><span className="scroll-line" aria-hidden="true" />Scroll to explore</span>
-          <span className="hero-meta-right mono">Discovery · Prototypes · Partnerships<br />Independent / Everywhere</span>
+          <span className="hero-meta-right mono">Turning complex problems into real, working solutions.<br />Enterprise experience. Startup speed.</span>
         </div>
       </section>
 
@@ -312,7 +312,7 @@ function Home() {
             </div>
             <p className="thesis-note reveal delay-2">Less ceremony.<br /><span>More lift.</span></p>
           </div>
-          <div className="route-bridge reveal"><span className="mono">NN / Background &amp; Mission</span><Link className="text-link mono" href="/about">What we do <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+          <div className="route-bridge reveal"><span className="mono">Next / Background & Mission</span><Link className="text-link mono" href="/about">What we do <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
         </div>
       </section>
 
@@ -507,7 +507,7 @@ function Insights() {
           </div>
         </div>
       </section>
-      <RouteBridge next="https://www.linkedin.com/in/wheresjek/" nextLabel="Start a conversation" label="Keep the altitude / Have an idea?" />
+      <RouteBridge next="https://www.linkedin.com/in/wheresjek/" nextLabel="Connect" label="Keep the altitude / Have an idea?" />
       {activeArticle && (
         <div className="insights-reader-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setActiveArticle(null); }} data-testid="modal-insight-backdrop">
           <article className="insights-reader" role="dialog" aria-modal="true" aria-labelledby="insight-title" data-testid="modal-insight">
