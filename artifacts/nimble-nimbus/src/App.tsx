@@ -416,7 +416,7 @@ function Labs() {
           </div>
         </div>
       </section>
-      <RouteBridge next="/ventures" nextLabel="Enter Ventures" label="Next / Product incubation until MVP" />
+      <RouteBridge next="/ventures" nextLabel="Enter Ventures" label="Next / Solution acceleration until MVP" />
     </Shell>
   );
 }
@@ -424,10 +424,10 @@ function Labs() {
 function Ventures() {
   return (
     <Shell>
-      <PageHero number="03" title="Stay for the" emphasis="build." description="Product incubation until an MVP is built, tested, and ready for the kind of attention that makes it stronger." />
+      <PageHero number="03" title="Stay for the" emphasis="build." description="Solution acceleration until an MVP is built, tested, and ready for the kind of attention that makes it stronger." />
       <section className="section editorial-body">
         <div className="section-inner editorial-split">
-          <span className="editorial-label mono reveal">Ventures / Incubation</span>
+          <span className="editorial-label mono reveal">Ventures / Solution acceleration</span>
           <div className="editorial-copy reveal delay-1">
             <p>Some ideas need a longer runway. Ventures is the close, practical partnership between a promising prototype and a first product people can use.</p>
             <p>We shape the product, the story, and the operating rhythm together — keeping the team small enough to hear what the work is saying.</p>
