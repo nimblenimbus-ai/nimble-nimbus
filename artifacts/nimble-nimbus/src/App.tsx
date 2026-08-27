@@ -151,11 +151,43 @@ function Shell({ children }: { children: ReactNode }) {
 }
 
 function ContactSection() {
-  const [formSent, setFormSent] = useState(false);
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle');
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFormSent(true);
-    event.currentTarget.reset();
+    setFormState('sending');
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = (formData.get('name') as string) || '';
+    const email = (formData.get('email') as string) || '';
+    const message = (formData.get('message') as string) || '';
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/idea@nimblenimbus.co.uk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: `New Brief from ${name} (${email})`
+        })
+      });
+
+      if (response.ok) {
+        setFormState('sent');
+        form.reset();
+      } else {
+        window.location.href = `mailto:idea@nimblenimbus.co.uk?subject=${encodeURIComponent(`New Brief from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+        setFormState('sent');
+      }
+    } catch {
+      window.location.href = `mailto:idea@nimblenimbus.co.uk?subject=${encodeURIComponent(`New Brief from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      setFormState('sent');
+    }
   };
 
   return (
@@ -170,14 +202,16 @@ function ContactSection() {
             </a>
             <form className="contact-form reveal delay-1" onSubmit={handleSubmit} data-testid="form-contact">
               <div className="contact-form-row">
-                <label><span className="sr-only">Your name</span><input name="name" type="text" placeholder="Your name" required data-testid="input-contact-name" /></label>
-                <label><span className="sr-only">Email address</span><input name="email" type="email" placeholder="Email address" required data-testid="input-contact-email" /></label>
+                <label><span className="sr-only">Your name</span><input name="name" type="text" placeholder="Your name" required data-testid="input-contact-name" disabled={formState === 'sending'} /></label>
+                <label><span className="sr-only">Email address</span><input name="email" type="email" placeholder="Email address" required data-testid="input-contact-email" disabled={formState === 'sending'} /></label>
               </div>
-              <label><span className="sr-only">What are you making?</span><textarea name="message" placeholder="What are you making?" required data-testid="input-contact-message" /></label>
-              {formSent ? (
+              <label><span className="sr-only">What are you making?</span><textarea name="message" placeholder="What are you making?" required data-testid="input-contact-message" disabled={formState === 'sending'} /></label>
+              {formState === 'sent' ? (
                 <p className="form-success" role="status" data-testid="status-contact-success">Received. We will make room for a useful next conversation.</p>
               ) : (
-                <button className="form-submit mono" type="submit" data-testid="button-contact-submit">Send the brief <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" /></button>
+                <button className="form-submit mono" type="submit" disabled={formState === 'sending'} data-testid="button-contact-submit">
+                  {formState === 'sending' ? 'Sending brief...' : 'Send the brief'} <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />
+                </button>
               )}
             </form>
           </div>
