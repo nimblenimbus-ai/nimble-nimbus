@@ -317,19 +317,22 @@ function Home() {
       </section>
 
       <section className="section home-path" data-testid="section-path">
-        <div className="section-inner path-layout">
-          <div className="path-intro">
-            <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The nimble path</span></div>
-            <h2 className="display reveal"><span className="line-break">From <em>idea</em></span><br /><span className="line-break">to <em>reality.</em></span></h2>
-            <p className="reveal delay-1">One spark, four ways to bring an idea to life. Start where the uncertainty is highest.</p>
+        <div className="section-inner">
+          <div className="path-layout">
+            <div className="path-intro">
+              <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The nimble path</span></div>
+              <h2 className="display reveal"><span className="line-break">From <em>idea</em></span><br /><span className="line-break">to <em>reality.</em></span></h2>
+              <p className="reveal delay-1">One spark, four ways to bring an idea to life. Start where the uncertainty is highest.</p>
+            </div>
+            <div className="path-list">
+              {pathSteps.map(([number, title, description]) => (
+                <div className="path-step reveal" key={number} data-testid={`item-path-${number}`}>
+                  <span className="path-step-index mono">{number}</span><h3>{title}</h3><p>{description}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="path-list">
-            {pathSteps.map(([number, title, description]) => (
-              <div className="path-step reveal" key={number} data-testid={`item-path-${number}`}>
-                <span className="path-step-index mono">{number}</span><h3>{title}</h3><p>{description}</p>
-              </div>
-            ))}
-          </div>
+          <div className="route-bridge reveal"><span className="mono">Next / Background & Mission</span><Link className="text-link mono" href="/about">What we do <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
         </div>
       </section>
       <ContactSection />
