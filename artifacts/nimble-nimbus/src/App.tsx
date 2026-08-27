@@ -131,7 +131,7 @@ function SiteFooter() {
     <footer className="site-footer" data-testid="footer-main">
       <Brand />
       <div className="footer-links mono">
-        <a className="footer-link" href="mailto:hello@nimblenimbus.incubator" data-testid="link-footer-email">Email</a>
+        <a className="footer-link" href="mailto:idea@nimblenimbus.co.uk" data-testid="link-footer-email">Email</a>
         <a className="footer-link" href="https://www.linkedin.com/in/wheresjek/" target="_blank" rel="noopener noreferrer" data-testid="link-footer-linkedin">LinkedIn</a>
       </div>
       <span className="footer-note mono" data-testid="text-footer-note">Nimble Nimbus / 2026</span>
@@ -165,8 +165,8 @@ function ContactSection() {
         <h2 className="contact-heading display reveal" data-testid="heading-contact">Have a sharp<br /><em>idea?</em></h2>
         <div className="contact-grid">
           <div>
-            <a className="contact-email reveal" href="mailto:hello@nimblenimbus.incubator" data-testid="link-contact-email">
-              hello@nimblenimbus.incubator <ArrowUpRight size={25} strokeWidth={1.4} aria-hidden="true" />
+            <a className="contact-email reveal" href="mailto:idea@nimblenimbus.co.uk" data-testid="link-contact-email">
+              idea@nimblenimbus.co.uk <ArrowUpRight size={25} strokeWidth={1.4} aria-hidden="true" />
             </a>
             <form className="contact-form reveal delay-1" onSubmit={handleSubmit} data-testid="form-contact">
               <div className="contact-form-row">
