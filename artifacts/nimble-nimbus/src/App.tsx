@@ -304,7 +304,7 @@ function Home() {
       <section className="section home-thesis" data-testid="section-thesis">
         <img className="field-logo" src="/NN-logo-transparent.png" alt="" aria-hidden="true" />
         <div className="section-inner">
-          <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The incubator / Point of view</span></div>
+          <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The idea lab / Point of view</span></div>
           <div className="thesis-layout">
             <div>
               <h2 className="section-heading display reveal">The nimble path<br />between <em>spark</em><br />and <em>signal.</em></h2>
@@ -352,7 +352,7 @@ function PageHero({ number, title, emphasis, description }: { number: string; ti
 function About() {
   return (
     <Shell>
-      <PageHero number="01" title="An incubator for" emphasis="clear skies." description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
+      <PageHero number="01" title="An idea accelerator for" emphasis="clear skies." description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
       <section className="section editorial-body" data-testid="section-about-mission">
         <div className="section-inner editorial-split">
           <span className="editorial-label mono reveal">Background &amp; Mission</span>
