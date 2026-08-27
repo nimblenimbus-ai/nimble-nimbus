@@ -100,16 +100,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-weight: 600;
   letter-spacing: -.055em;
 }
-.brand-mark {
-  width: 23px;
-  height: 23px;
-  display: grid;
-  place-items: center;
-  color: var(--canvas-top);
-  background: var(--display);
-  font-size: 17px;
-  line-height: 1;
-  transform: rotate(-12deg);
+.brand-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
 }
 .desktop-nav { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 35px); }
 .nav-link, .footer-link {

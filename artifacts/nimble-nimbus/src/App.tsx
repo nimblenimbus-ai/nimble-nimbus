@@ -76,7 +76,7 @@ function useReveal() {
 function Brand() {
   return (
     <Link className="brand" href="/" data-testid="link-brand-home" aria-label="Nimble Nimbus home">
-      <span className="brand-mark" aria-hidden="true">+</span>
+      <img className="brand-logo" src="/nimble-nimbus-logo.png" alt="Nimble Nimbus Logo" />
       <span>Nimble Nimbus</span>
     </Link>
   );
