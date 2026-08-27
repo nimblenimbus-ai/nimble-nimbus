@@ -97,7 +97,7 @@ function SiteNav() {
             </Link>
           ))}
           <a className="nav-cta mono" href="https://www.linkedin.com/in/wheresjek/" target="_blank" rel="noopener noreferrer" data-testid="link-nav-contact">
-            Start a conversation <ArrowUpRight size={15} strokeWidth={1.7} aria-hidden="true" />
+            LinkedIn <ArrowUpRight size={15} strokeWidth={1.7} aria-hidden="true" />
           </a>
         </nav>
         <button
@@ -119,7 +119,7 @@ function SiteNav() {
           </Link>
         ))}
         <a className="mobile-link" href="https://www.linkedin.com/in/wheresjek/" target="_blank" rel="noopener noreferrer" onClick={closeMenu} data-testid="link-mobile-contact">
-          Start a conversation <ArrowRight size={30} strokeWidth={1.2} aria-hidden="true" />
+          LinkedIn <ArrowRight size={30} strokeWidth={1.2} aria-hidden="true" />
         </a>
       </div>
     </>
@@ -302,7 +302,7 @@ function Home() {
       </section>
 
       <section className="section home-thesis" data-testid="section-thesis">
-        <span className="field-number" aria-hidden="true">NN</span>
+        <span className="field-number" aria-hidden="true"></span>
         <div className="section-inner">
           <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">The incubator / Point of view</span></div>
           <div className="thesis-layout">
