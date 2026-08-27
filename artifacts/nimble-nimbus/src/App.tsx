@@ -286,7 +286,7 @@ function Home() {
         <div className="hero-noise" aria-hidden="true" />
         <NimbusCloud />
         <div className="hero-inner">
-          <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent Idea Lab & Accelerator</div>
+          <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent Idea Accelerator Lab</div>
           <div className="hero-copy">
             <h1 className="hero-title display reveal visible delay-1" data-testid="text-hero-title">
               <span>Make altitude</span>
