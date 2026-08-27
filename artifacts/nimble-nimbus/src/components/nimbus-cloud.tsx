@@ -71,8 +71,13 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
         const progress = Math.max(0, Math.min(1, rawProgress));
 
         if (!reduceMotion) {
-          cloudGroup.position.x = startX + (endX - startX) * progress;
-          cloudGroup.position.y = startY + (endY - startY) * progress;
+          if (rawProgress >= 1) {
+            cloudGroup.position.x = startX;
+            cloudGroup.position.y = startY;
+          } else {
+            cloudGroup.position.x = startX + (endX - startX) * progress;
+            cloudGroup.position.y = startY + (endY - startY) * progress;
+          }
         }
 
         const opacity = Math.max(0, Math.min(1, 1 - progress));
