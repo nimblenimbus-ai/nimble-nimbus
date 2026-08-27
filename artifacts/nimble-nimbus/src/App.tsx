@@ -112,7 +112,7 @@ function SiteNav() {
         </button>
       </header>
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`} aria-hidden={!menuOpen} data-testid="menu-mobile">
-        <span className="mono">Nimble Nimbus / Independent venture incubator</span>
+        <span className="mono">Nimble Nimbus / Independent Idea Accelerator Lab</span>
         {navItems.map((item) => (
           <Link className="mobile-link" href={item.href} key={item.href} onClick={closeMenu} data-testid={`link-mobile-${item.label.toLowerCase()}`}>
             {item.label} <ArrowRight size={30} strokeWidth={1.2} aria-hidden="true" />
@@ -352,7 +352,7 @@ function PageHero({ number, title, emphasis, description }: { number: string; ti
 function About() {
   return (
     <Shell>
-      <PageHero number="01" title="An incubator for" emphasis="clear skies." description="Nimble Nimbus is an independent venture incubator for people with a sharp idea and no appetite for unnecessary ceremony." />
+      <PageHero number="01" title="An incubator for" emphasis="clear skies." description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
       <section className="section editorial-body" data-testid="section-about-mission">
         <div className="section-inner editorial-split">
           <span className="editorial-label mono reveal">Background &amp; Mission</span>
