@@ -332,12 +332,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   position: absolute;
   top: 2%;
   right: 4%;
-  color: rgba(142,197,252,.16);
+  color: rgba(142,197,252,.28);
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(190px, 30vw, 470px);
   font-weight: 600;
   letter-spacing: -.13em;
   line-height: .8;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
 }
 .intro-aside {
   max-width: 300px;
