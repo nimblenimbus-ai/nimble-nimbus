@@ -4,17 +4,5 @@
   "pages_build_output_dir": "./artifacts/nimble-nimbus/dist/public",
   "assets": {
     "directory": "./artifacts/nimble-nimbus/dist/public"
-  },
-  "routes": [
-    { "pattern": "nimblenimbus.co.uk", "custom_domain": true },
-    { "pattern": "www.nimblenimbus.co.uk", "custom_domain": true }
-  ],
-  "env": {
-    "staging": {
-      "name": "nimble-nimbus-staging",
-      "routes": [
-        { "pattern": "staging.nimblenimbus.co.uk", "custom_domain": true }
-      ]
-    }
   }
 }
