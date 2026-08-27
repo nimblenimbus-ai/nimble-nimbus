@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
     "build": "pnpm run typecheck && pnpm -r --if-present run build && mkdir -p dist/public && cp -r artifacts/nimble-nimbus/dist/public/* dist/public/ && mkdir -p dist && cp -r artifacts/nimble-nimbus/dist/public/* dist/",
-    "deploy": "npx wrangler pages deploy ./artifacts/nimble-nimbus/dist/public --project-name=nimble-nimbus",
+    "deploy": "echo 'Build completed'",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
