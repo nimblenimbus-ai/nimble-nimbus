@@ -5,15 +5,15 @@ console.log(`[deploy] Detected branch: "${branch}"`);
 
 try {
   if (branch === 'main') {
-    console.log('[deploy] Executing production deploy (npx wrangler deploy)...');
-    execSync('npx wrangler deploy', { stdio: 'inherit' });
+    console.log('[deploy] Executing production deploy (pnpm exec wrangler deploy)...');
+    execSync('pnpm exec wrangler deploy', { stdio: 'inherit' });
   } else {
-    console.log('[deploy] Executing staging deploy (npx wrangler deploy --env staging)...');
+    console.log('[deploy] Executing staging deploy (pnpm exec wrangler deploy --env staging)...');
     try {
-      execSync('npx wrangler deploy --env staging', { stdio: 'inherit' });
+      execSync('pnpm exec wrangler deploy --env staging', { stdio: 'inherit' });
     } catch (stagingErr) {
       console.warn('[deploy] Staging env deploy encountered an issue, falling back to standard wrangler deploy...');
-      execSync('npx wrangler deploy', { stdio: 'inherit' });
+      execSync('pnpm exec wrangler deploy', { stdio: 'inherit' });
     }
   }
 } catch (error) {
