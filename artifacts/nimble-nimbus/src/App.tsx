@@ -264,7 +264,7 @@ function ContactSection() {
               )}
             </form>
           </div>
-          <p className="contact-aside reveal delay-2">Tell us your idea, and how can we help you create something that matters.</p>
+          <p className="contact-aside reveal delay-2">Tell us how can we help you co-create something that matters.</p>
         </div>
       </div>
     </section>
@@ -383,12 +383,12 @@ function Home() {
   );
 }
 
-function PageHero({ number, title, emphasis, description }: { number: string; title: React.ReactNode; emphasis?: string; description: string }) {
+function PageHero({ number, title, emphasis, description }: { number: string; title: string; emphasis: string; description: string }) {
   return (
     <section className="page-hero" data-testid={`section-page-hero-${number}`}>
       <div className="page-hero-inner">
         <div className="page-kicker mono reveal visible">Nimble Nimbus / {number}</div>
-        <h1 className="page-title display reveal visible delay-1">{title}{emphasis && <><br /><em>{emphasis}</em></>}</h1>
+        <h1 className="page-title display reveal visible delay-1">{title}<br /><em>{emphasis}</em></h1>
         <p className="page-dek reveal visible delay-2">{description}</p>
       </div>
     </section>
@@ -398,7 +398,7 @@ function PageHero({ number, title, emphasis, description }: { number: string; ti
 function About() {
   return (
     <Shell>
-      <PageHero number="01" title={<>An <em>idea accelerator</em><br />for clear skies.</>} description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
+      <PageHero number="01" title="An idea accelerator for" emphasis="clear skies." description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
       <section className="section editorial-body" data-testid="section-about-mission">
         <div className="section-inner editorial-split">
           <span className="editorial-label mono reveal">Background &amp; Mission</span>
@@ -450,7 +450,7 @@ function Labs() {
         <div className="section-inner">
           <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">Labs / Short runway, real signal</span></div>
           <div className="lab-sprint">
-            <div className="sprint-figure reveal" aria-hidden="true"><div className="sprint-orbit" /><span className="sprint-word">make<br />clear.</span></div>
+            <div className="sprint-figure reveal" aria-hidden="true"><div className="sprint-orbit" /><span className="sprint-word">Discover</span></div>
             <div className="sprint-copy reveal delay-1"><strong>One focused sprint.<br />A more useful unknown.</strong><p>We work beside you, not around you. A compact run of interviews, framing, experiments, and one convincing prototype turns the fog into a decision.</p><p>Labs is designed for solo founders, independent operators, and small teams before the overhead arrives.</p></div>
           </div>
           <div className="incubation-line">
@@ -542,8 +542,8 @@ function Insights() {
         <div className="section-inner">
           <div className="insights-lead">
             <article className="lead-story reveal">
-              <div className="section-kicker reveal visible"><span className="line" aria-hidden="true" /><span className="mono">Latest dispatch / Thought bubbles worth sharing</span></div>
-              <h2 className="display">Make the first version <em>easy</em><br />to argue <em>with.</em></h2>
+              <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">Latest dispatch / Thought bubbles worth sharing</span></div>
+              <h2 className="display reveal"><span className="line-break">Make the first version <em>easy</em></span><br /><span className="line-break">to argue <em>with.</em></span></h2>
               <p>A note on why useful prototypes should create productive disagreement before they create confidence.</p>
             </article>
             <p className="publication-note reveal delay-1"><strong>Nimble Nimbus Notes</strong>A field publication about early-stage product thinking, creative partnership, and the useful distance between an idea and its next move.</p>
