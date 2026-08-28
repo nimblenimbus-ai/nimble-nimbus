@@ -356,6 +356,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
     z-index: 7;
     pointer-events: none;
     overflow: hidden;    /* clips items above this region */
+    opacity: 1;
+    transition: opacity 0.35s ease;
+  }
+  .hero-rain-nav.stopped {
+    opacity: 0;
+    pointer-events: none;
   }
   .hero-rain-item {
     position: absolute;

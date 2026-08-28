@@ -56,59 +56,45 @@ const articles = [
   },
 ] as const;
 
-const rainPool = navItems.filter((item) => item.label !== 'About');
-
-function getRandomRainItem(excludeLabel?: string) {
-  const available = excludeLabel ? rainPool.filter((i) => i.label !== excludeLabel) : rainPool;
-  return available[Math.floor(Math.random() * available.length)];
-}
-
-function getRandomRainX() {
-  return Math.floor(Math.random() * 65);
-}
+const fixedRainItems = [
+  { label: 'Labs', href: '/labs', x: 8, delay: '0s', dur: '22s', wobble: 0 },
+  { label: 'Ventures', href: '/ventures', x: 42, delay: '5.5s', dur: '25s', wobble: 1 },
+  { label: 'Nexus', href: '/nexus', x: 20, delay: '11s', dur: '23s', wobble: 2 },
+  { label: 'Insights', href: '/insights', x: 58, delay: '16.5s', dur: '24s', wobble: 3 },
+];
 
 function HeroRainNav() {
-  const [drops, setDrops] = useState(() => [
-    { id: 0, item: getRandomRainItem(), x: 8, delay: '0s', dur: '22s', wobble: 0 },
-    { id: 1, item: getRandomRainItem(), x: 42, delay: '5.5s', dur: '25s', wobble: 1 },
-    { id: 2, item: getRandomRainItem(), x: 20, delay: '11s', dur: '23s', wobble: 2 },
-    { id: 3, item: getRandomRainItem(), x: 58, delay: '16.5s', dur: '24s', wobble: 3 },
-  ]);
+  const [isAtTop, setIsAtTop] = useState(true);
 
-  const handleIteration = (id: number) => {
-    setDrops((prev) =>
-      prev.map((drop) => {
-        if (drop.id !== id) return drop;
-        return {
-          ...drop,
-          item: getRandomRainItem(drop.item.label),
-          x: getRandomRainX(),
-          wobble: (drop.wobble + 1) % 4,
-        };
-      })
-    );
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY <= 15);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="hero-rain-nav" aria-hidden="true">
-      {drops.map((drop) => (
-        <Link
-          key={drop.id}
-          href={drop.item.href}
-          className="hero-rain-item mono"
-          tabIndex={-1}
-          aria-hidden="true"
-          style={{
-            left: `${drop.x}%`,
-            ['--rain-dur' as any]: drop.dur,
-            ['--rain-delay' as any]: drop.delay,
-            ['--rain-wobble' as any]: `rain-wobble-${drop.wobble}`,
-          }}
-          onAnimationIteration={() => handleIteration(drop.id)}
-        >
-          {drop.item.label}
-        </Link>
-      ))}
+    <div className={`hero-rain-nav ${!isAtTop ? 'stopped' : ''}`} aria-hidden="true">
+      {isAtTop &&
+        fixedRainItems.map((item, idx) => (
+          <Link
+            key={`${item.label}-${idx}`}
+            href={item.href}
+            className="hero-rain-item mono"
+            tabIndex={-1}
+            aria-hidden="true"
+            style={{
+              left: `${item.x}%`,
+              ['--rain-dur' as any]: item.dur,
+              ['--rain-delay' as any]: item.delay,
+              ['--rain-wobble' as any]: `rain-wobble-${item.wobble}`,
+            }}
+          >
+            {item.label}
+          </Link>
+        ))}
     </div>
   );
 }
