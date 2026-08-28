@@ -349,13 +349,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero-rain-nav {
     display: block;
     position: absolute;
-    top: 55%;        /* lower and further down */
-    left: 65%;       /* further to the right */
-    right: 0;
+    top: 55%;           /* starts below the cloud */
+    left: 74%;          /* aligned under right-shifted cloud */
+    width: 220px;       /* narrow column width */
     bottom: 0;
     z-index: 7;
     pointer-events: none;
-    overflow: hidden; /* clips items above this region */
+    overflow: hidden;    /* clips items above this region */
   }
   .hero-rain-item {
     position: absolute;
@@ -373,7 +373,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
     padding: 6px 4px;
     animation:
       rain-fall var(--rain-dur, 22s) var(--rain-delay, 0s) linear infinite,
-      var(--rain-wobble, rain-wobble-0) var(--rain-wdur, 9s) var(--rain-delay, 0s) ease-in-out infinite;
+      var(--rain-wobble, rain-wobble-0) 9s var(--rain-delay, 0s) ease-in-out infinite;
     will-change: transform, opacity;
     transition: color 0.25s ease, opacity 0.25s ease;
   }
@@ -381,23 +381,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
     color: var(--display);
     animation-play-state: paused;
   }
-  /* Positions relative to the right-side container (left:65% of hero) */
-  .hero-rain-item:nth-child(1) { /* Labs */
-    left: 5%;
-    --rain-dur: 24s; --rain-delay: 0s;    --rain-wobble: rain-wobble-0; --rain-wdur: 11s;
-  }
-  .hero-rain-item:nth-child(2) { /* Ventures */
-    left: 28%;
-    --rain-dur: 22s; --rain-delay: 5s;   --rain-wobble: rain-wobble-1; --rain-wdur: 9.5s;
-  }
-  .hero-rain-item:nth-child(3) { /* Nexus */
-    left: 52%;
-    --rain-dur: 26s; --rain-delay: 10s;  --rain-wobble: rain-wobble-2; --rain-wdur: 12s;
-  }
-  .hero-rain-item:nth-child(4) { /* Insights */
-    left: 74%;
-    --rain-dur: 23s; --rain-delay: 15s;  --rain-wobble: rain-wobble-3; --rain-wdur: 10s;
-  }
+  /* Positions relative to the right-side container */
+  .hero-rain-item:nth-child(1) { left: 0%; --rain-dur: 24s; --rain-delay: 0s;  --rain-wobble: rain-wobble-0; }
+  .hero-rain-item:nth-child(2) { left: 35%; --rain-dur: 22s; --rain-delay: 5s;  --rain-wobble: rain-wobble-1; }
+  .hero-rain-item:nth-child(3) { left: 15%; --rain-dur: 26s; --rain-delay: 10s; --rain-wobble: rain-wobble-2; }
+  .hero-rain-item:nth-child(4) { left: 50%; --rain-dur: 23s; --rain-delay: 15s; --rain-wobble: rain-wobble-3; }
 }
 
 .section {
