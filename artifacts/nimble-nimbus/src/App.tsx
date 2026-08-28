@@ -59,17 +59,19 @@ const articles = [
 function HeroRainNav() {
   return (
     <div className="hero-rain-nav" aria-hidden="true">
-      {navItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className="hero-rain-item mono"
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          {item.label}
-        </Link>
-      ))}
+      {navItems
+        .filter((item) => item.label !== 'About')
+        .map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="hero-rain-item mono"
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+            {item.label}
+          </Link>
+        ))}
     </div>
   );
 }

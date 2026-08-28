@@ -349,8 +349,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero-rain-nav {
     display: block;
     position: absolute;
-    top: 40%;        /* start at the "for the idea." line height */
-    left: 54%;       /* right side only — clear of the title text */
+    top: 55%;        /* lower and further down */
+    left: 65%;       /* further to the right */
     right: 0;
     bottom: 0;
     z-index: 7;
@@ -362,10 +362,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
     top: 0;
     pointer-events: auto;
     text-decoration: none;
-    color: rgba(255,255,255,0.72);
-    font-family: var(--mono);
-    font-size: clamp(11px, 1.1vw, 14px);
-    letter-spacing: .2em;
+    color: var(--body);
+    font-family: var(--app-font-mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    line-height: 1.35;
     text-transform: uppercase;
     opacity: 0;
     white-space: nowrap;
@@ -374,32 +375,28 @@ button, a { -webkit-tap-highlight-color: transparent; }
       rain-fall var(--rain-dur, 22s) var(--rain-delay, 0s) linear infinite,
       var(--rain-wobble, rain-wobble-0) var(--rain-wdur, 9s) var(--rain-delay, 0s) ease-in-out infinite;
     will-change: transform, opacity;
-    transition: color 0.2s ease;
+    transition: color 0.25s ease, opacity 0.25s ease;
   }
   .hero-rain-item:hover {
-    color: var(--accent);
+    color: var(--display);
     animation-play-state: paused;
   }
-  /* Positions relative to the right-side container (left:54% of hero) */
-  .hero-rain-item:nth-child(1) {
-    left: 8%;
+  /* Positions relative to the right-side container (left:65% of hero) */
+  .hero-rain-item:nth-child(1) { /* Labs */
+    left: 5%;
     --rain-dur: 24s; --rain-delay: 0s;    --rain-wobble: rain-wobble-0; --rain-wdur: 11s;
   }
-  .hero-rain-item:nth-child(2) {
-    left: 35%;
-    --rain-dur: 22s; --rain-delay: 4.5s;  --rain-wobble: rain-wobble-1; --rain-wdur: 9.5s;
+  .hero-rain-item:nth-child(2) { /* Ventures */
+    left: 28%;
+    --rain-dur: 22s; --rain-delay: 5s;   --rain-wobble: rain-wobble-1; --rain-wdur: 9.5s;
   }
-  .hero-rain-item:nth-child(3) {
-    left: 58%;
-    --rain-dur: 26s; --rain-delay: 9s;    --rain-wobble: rain-wobble-2; --rain-wdur: 12s;
+  .hero-rain-item:nth-child(3) { /* Nexus */
+    left: 52%;
+    --rain-dur: 26s; --rain-delay: 10s;  --rain-wobble: rain-wobble-2; --rain-wdur: 12s;
   }
-  .hero-rain-item:nth-child(4) {
-    left: 20%;
-    --rain-dur: 23s; --rain-delay: 14s;   --rain-wobble: rain-wobble-3; --rain-wdur: 10s;
-  }
-  .hero-rain-item:nth-child(5) {
-    left: 72%;
-    --rain-dur: 25s; --rain-delay: 6s;    --rain-wobble: rain-wobble-4; --rain-wdur: 8.5s;
+  .hero-rain-item:nth-child(4) { /* Insights */
+    left: 74%;
+    --rain-dur: 23s; --rain-delay: 15s;  --rain-wobble: rain-wobble-3; --rain-wdur: 10s;
   }
 }
 

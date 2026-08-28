@@ -52,7 +52,7 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
         const aspect = width / height;
 
         if (loadedScene) {
-          const responsiveScale = aspect > 1.2 ? 0.56 : aspect > 0.85 ? 0.38 : 0.16;
+          const responsiveScale = aspect > 1.2 ? 0.42 : aspect > 0.85 ? 0.285 : 0.16;
           loadedScene.scale.setScalar(responsiveScale);
         }
 
