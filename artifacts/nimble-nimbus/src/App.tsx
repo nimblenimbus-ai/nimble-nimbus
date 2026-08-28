@@ -543,7 +543,7 @@ function Insights() {
           <div className="insights-lead">
             <article className="lead-story reveal">
               <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">Latest dispatch / Thought bubbles worth sharing</span></div>
-              <h2 className="display reveal"><span className="line-break">Make the first version <em>easy</em></span><br /><span className="line-break">to argue <em>with.</em></span></h2>
+              <h2 className="display reveal">Make the first <em>version</em><br />easy to argue <em>with.</em></h2>
               <p>A note on why useful prototypes should create productive disagreement before they create confidence.</p>
             </article>
             <p className="publication-note reveal delay-1"><strong>Nimble Nimbus Notes</strong>A field publication about early-stage product thinking, creative partnership, and the useful distance between an idea and its next move.</p>
