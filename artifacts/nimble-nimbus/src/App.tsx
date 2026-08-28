@@ -34,22 +34,22 @@ const principles = [
 
 const articles = [
   {
-    number: 'NN',
-    category: 'Field note / 08 min',
+    number: '01',
+    category: 'Field note / 02 min',
     title: 'The altitude test: knowing when to zoom out',
     intro: 'A practical note on finding the useful distance from a problem before the solution starts making noise.',
     body: 'The first version of a product is rarely a product. It is a point of view with enough shape to be argued with. The altitude test is simple: can you describe the change you want to create without describing the interface? If not, go higher. The sharper question usually arrives just after the obvious answer.',
   },
   {
     number: '02',
-    category: 'Deep dive / 12 min',
+    category: 'Deep dive / 02 min',
     title: 'A prototype is a conversation, not a miniature launch',
     intro: 'What to build when certainty is expensive and the useful signal is still hiding.',
     body: 'A prototype earns its keep by making a conversation more specific. It should expose the risk, not disguise it. We look for one behavior, one audience, and one honest moment of friction. Everything else can wait until the question has earned more detail.',
   },
   {
     number: '03',
-    category: 'Dispatch / 06 min',
+    category: 'Dispatch / 02 min',
     title: 'The quiet power of the right collaborator',
     intro: 'A field guide to knowing which missing perspective can move an idea forward.',
     body: 'Partnership is not a roster exercise. The best collaborator changes the quality of the question in the room. We bring people in for a distinct point of view, a specific craft, or a lived relationship to the problem — never just to make the team look complete.',
@@ -57,10 +57,10 @@ const articles = [
 ] as const;
 
 const fixedRainItems = [
-  { label: 'Labs', href: '/labs', x: 8, delay: '0s', dur: '22s', wobble: 0 },
-  { label: 'Ventures', href: '/ventures', x: 42, delay: '5.5s', dur: '25s', wobble: 1 },
-  { label: 'Nexus', href: '/nexus', x: 20, delay: '11s', dur: '23s', wobble: 2 },
-  { label: 'Insights', href: '/insights', x: 58, delay: '16.5s', dur: '24s', wobble: 3 },
+  { label: 'Labs', href: '/labs', x: 8, delay: '0s', dur: '12s', wobble: 0 },
+  { label: 'Ventures', href: '/ventures', x: 42, delay: '3s', dur: '12s', wobble: 1 },
+  { label: 'Nexus', href: '/nexus', x: 20, delay: '6s', dur: '12s', wobble: 2 },
+  { label: 'Insights', href: '/insights', x: 58, delay: '9s', dur: '12s', wobble: 3 },
 ];
 
 function HeroRainNav() {
@@ -543,7 +543,7 @@ function Insights() {
           <div className="insights-lead">
             <article className="lead-story reveal">
               <div className="section-kicker reveal"><span className="line" aria-hidden="true" /><span className="mono">Latest dispatch / Thought bubbles worth sharing</span></div>
-              <h2 className="display reveal">Make the first <em>version</em><br />easy to argue <em>with.</em></h2>
+              <h2 className="display reveal">Make the first version easy to argue with.</h2>
               <p>A note on why useful prototypes should create productive disagreement before they create confidence.</p>
             </article>
             <p className="publication-note reveal delay-1"><strong>Nimble Nimbus Notes</strong>A field publication about early-stage product thinking, creative partnership, and the useful distance between an idea and its next move.</p>
