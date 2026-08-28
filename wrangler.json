@@ -2,7 +2,8 @@
   "name": "nimble-nimbus",
   "compatibility_date": "2026-08-27",
   "assets": {
-    "directory": "./artifacts/nimble-nimbus/dist/public"
+    "directory": "./artifacts/nimble-nimbus/dist/public",
+    "not_found_handling": "single-page-app"
   },
   "routes": [
     { "pattern": "nimblenimbus.co.uk/*", "zone_name": "nimblenimbus.co.uk" },
@@ -12,7 +13,8 @@
     "staging": {
       "name": "nimble-nimbus-staging",
       "assets": {
-        "directory": "./artifacts/nimble-nimbus/dist/public"
+        "directory": "./artifacts/nimble-nimbus/dist/public",
+        "not_found_handling": "single-page-app"
       },
       "routes": [
         { "pattern": "staging.nimblenimbus.co.uk/*", "zone_name": "nimblenimbus.co.uk" }
