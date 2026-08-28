@@ -56,6 +56,24 @@ const articles = [
   },
 ] as const;
 
+function HeroRainNav() {
+  return (
+    <div className="hero-rain-nav" aria-hidden="true">
+      {navItems.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="hero-rain-item mono"
+          tabIndex={-1}
+          aria-hidden="true"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 function useReveal() {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('.reveal');
@@ -285,6 +303,7 @@ function Home() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-noise" aria-hidden="true" />
         <NimbusCloud />
+        <HeroRainNav />
         <div className="hero-inner">
           <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent Idea Accelerator Lab</div>
           <div className="hero-copy">
