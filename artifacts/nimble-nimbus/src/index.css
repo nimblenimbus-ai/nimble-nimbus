@@ -349,10 +349,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero-rain-nav {
     display: block;
     position: absolute;
-    inset: 0;
+    top: 40%;        /* start at the "for the idea." line height */
+    left: 54%;       /* right side only — clear of the title text */
+    right: 0;
+    bottom: 0;
     z-index: 7;
     pointer-events: none;
-    overflow: hidden;
+    overflow: hidden; /* clips items above this region */
   }
   .hero-rain-item {
     position: absolute;
@@ -377,25 +380,25 @@ button, a { -webkit-tap-highlight-color: transparent; }
     color: var(--accent);
     animation-play-state: paused;
   }
-  /* All items clustered in the right-hand cloud zone ~55-90% */
+  /* Positions relative to the right-side container (left:54% of hero) */
   .hero-rain-item:nth-child(1) {
-    left: 58%;
+    left: 8%;
     --rain-dur: 24s; --rain-delay: 0s;    --rain-wobble: rain-wobble-0; --rain-wdur: 11s;
   }
   .hero-rain-item:nth-child(2) {
-    left: 68%;
+    left: 35%;
     --rain-dur: 22s; --rain-delay: 4.5s;  --rain-wobble: rain-wobble-1; --rain-wdur: 9.5s;
   }
   .hero-rain-item:nth-child(3) {
-    left: 76%;
+    left: 58%;
     --rain-dur: 26s; --rain-delay: 9s;    --rain-wobble: rain-wobble-2; --rain-wdur: 12s;
   }
   .hero-rain-item:nth-child(4) {
-    left: 63%;
+    left: 20%;
     --rain-dur: 23s; --rain-delay: 14s;   --rain-wobble: rain-wobble-3; --rain-wdur: 10s;
   }
   .hero-rain-item:nth-child(5) {
-    left: 83%;
+    left: 72%;
     --rain-dur: 25s; --rain-delay: 6s;    --rain-wobble: rain-wobble-4; --rain-wdur: 8.5s;
   }
 }
