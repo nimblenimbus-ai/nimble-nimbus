@@ -381,10 +381,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
     animation-play-state: paused;
   }
   /* Positions relative to the right-side container */
-  .hero-rain-item:nth-child(1) { left: 0%; --rain-dur: 12s; --rain-delay: 0s;  --rain-wobble: rain-wobble-0; }
-  .hero-rain-item:nth-child(2) { left: 35%; --rain-dur: 12s; --rain-delay: 3s;  --rain-wobble: rain-wobble-1; }
-  .hero-rain-item:nth-child(3) { left: 15%; --rain-dur: 12s; --rain-delay: 6s;  --rain-wobble: rain-wobble-2; }
-  .hero-rain-item:nth-child(4) { left: 50%; --rain-dur: 12s; --rain-delay: 9s;  --rain-wobble: rain-wobble-3; }
+  .hero-rain-item:nth-child(1) { left: 0%; --rain-dur: 24s; --rain-delay: 0s;  --rain-wobble: rain-wobble-0; }
+  .hero-rain-item:nth-child(2) { left: 35%; --rain-dur: 22s; --rain-delay: 5s;  --rain-wobble: rain-wobble-1; }
+  .hero-rain-item:nth-child(3) { left: 15%; --rain-dur: 26s; --rain-delay: 10s; --rain-wobble: rain-wobble-2; }
+  .hero-rain-item:nth-child(4) { left: 50%; --rain-dur: 23s; --rain-delay: 15s; --rain-wobble: rain-wobble-3; }
 }
 
 .section {
