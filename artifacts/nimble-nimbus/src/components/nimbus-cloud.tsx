@@ -52,13 +52,13 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
         const aspect = width / height;
 
         if (loadedScene) {
-          const responsiveScale = aspect > 1.2 ? 0.58125 : aspect > 0.85 ? 0.38 : 0.16;
+          const responsiveScale = aspect > 1.2 ? 0.42 : aspect > 0.85 ? 0.285 : 0.16;
           loadedScene.scale.setScalar(responsiveScale);
         }
 
-        const startY = aspect > 1.2 ? 0.36 : aspect > 0.85 ? 0.36 : 0.44;
-        const endY = aspect > 1.2 ? -0.22 : aspect > 0.85 ? -0.18 : -0.12;
-        const startX = aspect > 1.2 ? 0.26 : aspect > 0.85 ? 0.18 : 0.08;
+        const startY = aspect > 1.2 ? 0.22 : aspect > 0.85 ? 0.36 : 0.44;
+        const endY = aspect > 1.2 ? -0.30 : aspect > 0.85 ? -0.18 : -0.12;
+        const startX = aspect > 1.2 ? 0.50 : aspect > 0.85 ? 0.18 : 0.08;
 
         const scrollY = window.scrollY;
         const thesisEl = document.querySelector('[data-testid="section-thesis"]');
@@ -117,8 +117,8 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
           const width = mount?.clientWidth || 1;
           const height = mount?.clientHeight || 1;
           const aspect = width / height;
-          const startY = aspect > 1.2 ? 0.36 : aspect > 0.85 ? 0.36 : 0.44;
-          const endY = aspect > 1.2 ? -0.22 : aspect > 0.85 ? -0.18 : -0.12;
+          const startY = aspect > 1.2 ? 0.22 : aspect > 0.85 ? 0.36 : 0.44;
+          const endY = aspect > 1.2 ? -0.30 : aspect > 0.85 ? -0.18 : -0.12;
 
           const elapsed = time - ascensionStartTime;
           const riseProgress = Math.min(1, Math.max(0, elapsed / 1800));

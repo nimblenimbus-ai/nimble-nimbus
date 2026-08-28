@@ -56,6 +56,49 @@ const articles = [
   },
 ] as const;
 
+const fixedRainItems = [
+  { label: 'Labs', href: '/labs', x: 8, delay: '0s', dur: '22s', wobble: 0 },
+  { label: 'Ventures', href: '/ventures', x: 42, delay: '5.5s', dur: '25s', wobble: 1 },
+  { label: 'Nexus', href: '/nexus', x: 20, delay: '11s', dur: '23s', wobble: 2 },
+  { label: 'Insights', href: '/insights', x: 58, delay: '16.5s', dur: '24s', wobble: 3 },
+];
+
+function HeroRainNav() {
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY <= 15);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className={`hero-rain-nav ${!isAtTop ? 'stopped' : ''}`} aria-hidden="true">
+      {isAtTop &&
+        fixedRainItems.map((item, idx) => (
+          <Link
+            key={`${item.label}-${idx}`}
+            href={item.href}
+            className="hero-rain-item mono"
+            tabIndex={-1}
+            aria-hidden="true"
+            style={{
+              left: `${item.x}%`,
+              ['--rain-dur' as any]: item.dur,
+              ['--rain-delay' as any]: item.delay,
+              ['--rain-wobble' as any]: `rain-wobble-${item.wobble}`,
+            }}
+          >
+            {item.label}
+          </Link>
+        ))}
+    </div>
+  );
+}
+
 function useReveal() {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('.reveal');
@@ -282,9 +325,9 @@ function Home() {
           />
         </div>
         <div className="hero-video-shade" aria-hidden="true" />
-        <div className="hero-grid" aria-hidden="true" />
         <div className="hero-noise" aria-hidden="true" />
         <NimbusCloud />
+        <HeroRainNav />
         <div className="hero-inner">
           <div className="eyebrow mono reveal visible" data-testid="text-hero-eyebrow">Independent Idea Accelerator Lab</div>
           <div className="hero-copy">
