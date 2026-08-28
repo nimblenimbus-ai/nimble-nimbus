@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "deploy": "if [ \"$CF_PAGES_BRANCH\" = \"main\" ] || [ \"$CF_BRANCH\" = \"main\" ] || [ \"$GIT_BRANCH\" = \"main\" ]; then npx wrangler deploy; else npx wrangler deploy --env staging; fi",
+    "deploy": "node ./scripts/deploy.mjs",
     "deploy:staging": "npx wrangler deploy --env staging",
     "deploy:production": "npx wrangler deploy",
     "typecheck:libs": "tsc --build",
