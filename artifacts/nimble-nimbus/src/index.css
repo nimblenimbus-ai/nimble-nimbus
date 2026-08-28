@@ -622,7 +622,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Insights is intentionally a reading room, not a SaaS card deck. */
 .insights-lead { display: grid; grid-template-columns: 1.2fr .8fr; gap: 8vw; align-items: end; }
 .lead-story { padding-bottom: 36px; border-bottom: 1px solid var(--line); }
-.lead-story h2 { max-width: 760px; margin: 20px 0 18px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(42px, 6vw, 88px); letter-spacing: -.08em; line-height: .88; }
+.lead-story .section-kicker { margin-bottom: 24px; }
+.lead-story h2 { max-width: 760px; margin: 0 0 18px; }
 .lead-story p { max-width: 510px; margin: 0; color: var(--body); font-size: 15px; font-weight: 600; line-height: 1.6; }
 .publication-note { max-width: 270px; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.6; }
 .publication-note strong { display: block; margin-bottom: 15px; color: var(--display); font-family: var(--app-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }

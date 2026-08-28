@@ -541,7 +541,11 @@ function Insights() {
       <section className="section editorial-body" data-testid="section-insights-publication">
         <div className="section-inner">
           <div className="insights-lead">
-            <article className="lead-story reveal"><span className="mono">Latest dispatch / 14.05.25</span><h2>Make the first version easy to argue with.</h2><p>A note on why useful prototypes should create productive disagreement before they create confidence.</p></article>
+            <article className="lead-story reveal">
+              <div className="section-kicker reveal visible"><span className="line" aria-hidden="true" /><span className="mono">Latest dispatch / Thought bubbles worth sharing</span></div>
+              <h2 className="display">Make the first version <em>easy</em><br />to argue <em>with.</em></h2>
+              <p>A note on why useful prototypes should create productive disagreement before they create confidence.</p>
+            </article>
             <p className="publication-note reveal delay-1"><strong>Nimble Nimbus Notes</strong>A field publication about early-stage product thinking, creative partnership, and the useful distance between an idea and its next move.</p>
           </div>
           <div className="article-list" data-testid="list-insights">
