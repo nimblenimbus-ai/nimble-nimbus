@@ -3,5 +3,20 @@
   "compatibility_date": "2026-08-27",
   "assets": {
     "directory": "./artifacts/nimble-nimbus/dist/public"
+  },
+  "routes": [
+    { "pattern": "nimblenimbus.co.uk/*", "zone_name": "nimblenimbus.co.uk" },
+    { "pattern": "www.nimblenimbus.co.uk/*", "zone_name": "nimblenimbus.co.uk" }
+  ],
+  "env": {
+    "staging": {
+      "name": "nimble-nimbus-staging",
+      "assets": {
+        "directory": "./artifacts/nimble-nimbus/dist/public"
+      },
+      "routes": [
+        { "pattern": "staging.nimblenimbus.co.uk/*", "zone_name": "nimblenimbus.co.uk" }
+      ]
+    }
   }
 }
