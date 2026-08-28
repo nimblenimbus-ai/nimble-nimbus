@@ -21,8 +21,8 @@ const navItems = [
 const pathSteps = [
   ['01', 'Discover', 'Name the real question before anyone starts decorating the answer.'],
   ['02', 'Prototype', 'Make the smallest convincing thing, then put it in the hands of people who matter.'],
-  ['03', 'Accelerate', 'Turn the battle tested prototype into a working MVP, driving it forward until the idea proves it belongs.'],
-  ['04', 'Connect', 'Bring in the exact talent, taste, and reach the next chapter needs.'],
+  ['03', 'Accelerate', 'Turn battle-tested prototypes into a working MVP and validate with real users.'],
+  ['04', 'Connect', 'Bring in the right talent and skills to gain the momentum it deserves.'],
 ] as const;
 
 const principles = [
@@ -264,7 +264,7 @@ function ContactSection() {
               )}
             </form>
           </div>
-          <p className="contact-aside reveal delay-2">Tell us the honest version. What is the idea, and what would make it matter in the world?</p>
+          <p className="contact-aside reveal delay-2">Tell us your idea, and how can we help you create something that matters.</p>
         </div>
       </div>
     </section>
