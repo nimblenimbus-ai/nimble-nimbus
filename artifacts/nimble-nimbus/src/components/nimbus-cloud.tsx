@@ -58,7 +58,7 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
 
         const startY = aspect > 1.2 ? 0.22 : aspect > 0.85 ? 0.36 : 0.44;
         const endY = aspect > 1.2 ? -0.30 : aspect > 0.85 ? -0.18 : -0.12;
-        const startX = aspect > 1.2 ? 0.58 : aspect > 0.85 ? 0.18 : 0.08;
+        const startX = aspect > 1.2 ? 0.50 : aspect > 0.85 ? 0.18 : 0.08;
 
         const scrollY = window.scrollY;
         const thesisEl = document.querySelector('[data-testid="section-thesis"]');

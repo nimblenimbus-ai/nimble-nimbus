@@ -350,7 +350,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
     display: block;
     position: absolute;
     top: 55%;           /* starts below the cloud */
-    left: 74%;          /* aligned under right-shifted cloud */
+    left: 70%;          /* aligned under shifted cloud */
     width: 220px;       /* narrow column width */
     bottom: 0;
     z-index: 7;
