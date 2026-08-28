@@ -383,12 +383,12 @@ function Home() {
   );
 }
 
-function PageHero({ number, title, emphasis, description }: { number: string; title: string; emphasis: string; description: string }) {
+function PageHero({ number, title, emphasis, description }: { number: string; title: React.ReactNode; emphasis?: string; description: string }) {
   return (
     <section className="page-hero" data-testid={`section-page-hero-${number}`}>
       <div className="page-hero-inner">
         <div className="page-kicker mono reveal visible">Nimble Nimbus / {number}</div>
-        <h1 className="page-title display reveal visible delay-1">{title}<br /><em>{emphasis}</em></h1>
+        <h1 className="page-title display reveal visible delay-1">{title}{emphasis && <><br /><em>{emphasis}</em></>}</h1>
         <p className="page-dek reveal visible delay-2">{description}</p>
       </div>
     </section>
@@ -398,7 +398,7 @@ function PageHero({ number, title, emphasis, description }: { number: string; ti
 function About() {
   return (
     <Shell>
-      <PageHero number="01" title="An idea accelerator for" emphasis="clear skies." description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
+      <PageHero number="01" title={<>An <em>idea accelerator</em><br />for clear skies.</>} description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony." />
       <section className="section editorial-body" data-testid="section-about-mission">
         <div className="section-inner editorial-split">
           <span className="editorial-label mono reveal">Background &amp; Mission</span>
