@@ -325,7 +325,6 @@ function Home() {
           />
         </div>
         <div className="hero-video-shade" aria-hidden="true" />
-        <div className="hero-grid" aria-hidden="true" />
         <div className="hero-noise" aria-hidden="true" />
         <NimbusCloud />
         <HeroRainNav />

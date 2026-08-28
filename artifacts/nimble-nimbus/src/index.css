@@ -221,14 +221,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
 }
 .hero-grid {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  pointer-events: none;
-  opacity: .14;
-  background-image: linear-gradient(90deg, transparent 0 49.8%, var(--display) 50%, transparent 50.2%);
-  background-size: 25% 100%;
-  mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+  display: none;
 }
 .hero-inner {
   position: relative;
