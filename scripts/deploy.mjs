@@ -1,23 +1,33 @@
 import { execSync } from 'child_process';
 
-// Cloudflare Pages exposes CF_PAGES_BRANCH during build but not always deploy.
-// Fall back to reading git HEAD directly.
+// Cloudflare Workers CI checks out a detached HEAD, so git rev-parse returns "HEAD".
+// Try multiple strategies to find the real branch name.
 function detectBranch() {
+  // 1. Try standard CI env vars (Cloudflare Pages / other CI)
   const fromEnv =
     process.env.CF_PAGES_BRANCH ||
     process.env.CF_BRANCH ||
     process.env.GIT_BRANCH ||
-    process.env.HEAD ||
     process.env.BRANCH ||
+    process.env.HEAD_BRANCH ||
     '';
-
   if (fromEnv) return fromEnv;
 
+  // 2. Try git symbolic-ref (works when not detached)
   try {
-    return execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-  } catch {
-    return '';
-  }
+    const ref = execSync('git symbolic-ref --short HEAD', { encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
+    if (ref && ref !== 'HEAD') return ref;
+  } catch { /* detached HEAD — continue */ }
+
+  // 3. In Cloudflare Workers CI the remote ref reveals the branch
+  try {
+    const refs = execSync('git log -1 --format=%D HEAD', { encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
+    // refs looks like "HEAD, origin/staging" or "HEAD, origin/main"
+    const match = refs.match(/origin\/([^\s,]+)/);
+    if (match) return match[1];
+  } catch { /* ignore */ }
+
+  return '';
 }
 
 const branch = detectBranch();
