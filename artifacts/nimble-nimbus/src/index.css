@@ -652,6 +652,27 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .reader-close { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 38px; height: 38px; color: var(--accent); background: transparent; border: 1px solid var(--accent); cursor: pointer; }
 .insights-reader h2 { max-width: 650px; margin: 20px 0; color: var(--display); font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(43px, 7vw, 82px); letter-spacing: -.08em; line-height: .87; }
 .insights-reader p { max-width: 610px; margin: 0 0 20px; color: var(--body); font-size: 16px; line-height: 1.7; }
+.reader-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid var(--display);
+  color: var(--display);
+  background: transparent;
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .25s ease, background-color .25s ease, transform .25s ease;
+}
+.reader-link:hover, .reader-link:focus-visible {
+  color: var(--canvas-top);
+  background: var(--display);
+  transform: translateY(-2px);
+}
 
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s cubic-bezier(.2, .75, .25, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }

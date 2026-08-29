@@ -54,6 +54,15 @@ const articles = [
     intro: 'A field guide to knowing which missing perspective can move an idea forward.',
     body: 'Partnership is not a roster exercise. The best collaborator changes the quality of the question in the room. We bring people in for a distinct point of view, a specific craft, or a lived relationship to the problem — never just to make the team look complete.',
   },
+  {
+    number: '04',
+    category: 'Nibble / 03 min',
+    title: 'Nibble #01: Escaping the Feature Factory',
+    intro: 'How to move software organisations from shipping endless outputs to managing by real outcomes.',
+    body: 'Shipping software is an activity, not an achievement. Success only starts when customer behaviour changes. To escape the feature factory, teams must separate outputs (what you build) from outcomes (measurable behavioural change). Frame goals as a two-way negotiation, single-task squads on one primary outcome for 2–3 quarters, distinguish discovery learning from performance targets, and redefine "Done" to evaluate real-world impact.',
+    link: 'https://nimblenimbus.substack.com/p/nibble-01-escaping-the-feature-factory',
+    linkText: 'Read full post on Substack',
+  },
 ] as const;
 
 const SPACINGS = [0, 2, 3, 4, 5];
@@ -583,6 +592,19 @@ function Insights() {
             <span className="mono">{activeArticle.number} / {activeArticle.category}</span>
             <h2 id="insight-title">{activeArticle.title}</h2>
             <p>{activeArticle.intro}</p><p>{activeArticle.body}</p>
+            {'link' in activeArticle && activeArticle.link && (
+              <div style={{ marginTop: '28px', paddingTop: '22px', borderTop: '1px solid var(--line)' }}>
+                <a
+                  className="reader-link mono"
+                  href={activeArticle.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-article-external"
+                >
+                  {'linkText' in activeArticle && activeArticle.linkText ? activeArticle.linkText : 'Read full post on Substack'} <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            )}
           </article>
         </div>
       )}

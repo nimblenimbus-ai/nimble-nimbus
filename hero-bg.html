@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nimble Nimbus — Hero Background</title>
+    <link rel="icon" type="image/png" href="/NN-logo-transparent.png" />
+    <style>
+      :root {
+        --canvas-top: #113264;
+        --canvas-bottom: #0A1D3B;
+        --display: #8EC5FC;
+        --accent: #EAF2FD;
+        --body: #D4E5F9;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(155deg, var(--canvas-top) 9%, var(--canvas-bottom) 100%);
+      }
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: max(760px, 100svh);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(155deg, var(--canvas-top) 9%, var(--canvas-bottom) 100%);
+      }
+      .hero-video-wrap {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        overflow: hidden;
+        background: var(--canvas-top);
+      }
+      .hero-video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center center;
+        opacity: .28;
+        filter: saturate(.48) hue-rotate(155deg) contrast(.95);
+        transform: scale(1.04);
+      }
+      .hero-video-shade {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, rgba(17,50,100,.76) 0%, rgba(17,50,100,.16) 42%, rgba(36,94,166,.78) 100%),
+          linear-gradient(90deg, rgba(17,50,100,.65), transparent 58%);
+      }
+      .hero-noise {
+        position: fixed;
+        z-index: 2;
+        inset: 0;
+        pointer-events: none;
+        opacity: .12;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      }
+      .hero-cloud {
+        position: absolute;
+        inset: -5vh -5vw;
+        z-index: 4;
+        pointer-events: none;
+      }
+      .hero-cloud canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero" id="top">
+      <div class="hero-video-wrap" aria-hidden="true">
+        <video
+          class="hero-video"
+          src="/nimble-nimbus-sunset.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        ></video>
+      </div>
+      <div class="hero-video-shade" aria-hidden="true"></div>
+      <div class="hero-noise" aria-hidden="true"></div>
+      <div class="hero-cloud" id="cloud-mount"></div>
+    </section>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+      const mount = document.getElementById('cloud-mount');
+      if (mount) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
+        camera.position.set(0, 0.12, 2.7);
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.setClearColor(0x000000, 0);
+        mount.appendChild(renderer.domElement);
+
+        const ambient = new THREE.HemisphereLight(0xeaf2fd, 0x113264, 2.5);
+        const key = new THREE.DirectionalLight(0x8ec5fc, 3);
+        key.position.set(2, 3, 4);
+        scene.add(ambient, key);
+
+        const cloudGroup = new THREE.Group();
+        cloudGroup.rotation.set(-0.08, 0.18, -0.05);
+        scene.add(cloudGroup);
+
+        const loader = new GLTFLoader();
+        let loadedScene = null;
+
+        const updatePosition = () => {
+          const width = mount.clientWidth || 1;
+          const height = mount.clientHeight || 1;
+          const aspect = width / height;
+
+          if (loadedScene) {
+            const responsiveScale = aspect > 1.2 ? 0.42 : aspect > 0.85 ? 0.285 : 0.16;
+            loadedScene.scale.setScalar(responsiveScale);
+          }
+
+          const startY = aspect > 1.2 ? 0.22 : aspect > 0.85 ? 0.36 : 0.44;
+          const startX = aspect > 1.2 ? 0.50 : aspect > 0.85 ? 0.18 : 0.08;
+
+          cloudGroup.position.x = startX;
+          cloudGroup.position.y = startY;
+        };
+
+        const resize = () => {
+          const width = mount.clientWidth || 1;
+          const height = mount.clientHeight || 1;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height, false);
+          updatePosition();
+        };
+
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        loader.load(
+          '/nimbus-cloud.glb',
+          (gltf) => {
+            loadedScene = gltf.scene;
+            loadedScene.position.set(0, 0, 0);
+            loadedScene.traverse((object) => {
+              if (object instanceof THREE.Mesh) {
+                object.frustumCulled = false;
+                const materials = Array.isArray(object.material) ? object.material : [object.material];
+                materials.forEach((material) => {
+                  if ('color' in material) material.color.set('#D4E5F9');
+                  if ('roughness' in material) material.roughness = 0.72;
+                  if ('metalness' in material) material.metalness = 0.08;
+                });
+              }
+            });
+            cloudGroup.add(loadedScene);
+            updatePosition();
+          },
+          undefined,
+          (err) => console.error('Cloud load error:', err)
+        );
+
+        let frame = 0;
+        let pointer = { x: 0, y: 0 };
+        window.addEventListener('pointermove', (e) => {
+          pointer.x = (e.clientX / window.innerWidth - 0.5) * 0.18;
+          pointer.y = (e.clientY / window.innerHeight - 0.5) * -0.12;
+        }, { passive: true });
+
+        const animate = (time) => {
+          if (cloudGroup) {
+            const targetRotY = 0.18 + pointer.x;
+            const targetRotX = -0.08 + pointer.y;
+            cloudGroup.rotation.y += (targetRotY - cloudGroup.rotation.y) * 0.018;
+            cloudGroup.rotation.x += (targetRotX - cloudGroup.rotation.x) * 0.018;
+            cloudGroup.position.z = Math.sin(time * 0.00035) * 0.035;
+          }
+          renderer.render(scene, camera);
+          frame = requestAnimationFrame(animate);
+        };
+        frame = requestAnimationFrame(animate);
+      }
+    </script>
+  </body>
+</html>
