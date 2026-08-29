@@ -147,7 +147,7 @@ export function NimbusCloud({ className = '' }: NimbusCloudProps) {
       };
 
       loader.load(
-        '/Cloud3D.glb',
+        '/nimbus-cloud.glb',
         (gltf: any) => {
           if (disposed) return;
           loadedScene = gltf.scene;
