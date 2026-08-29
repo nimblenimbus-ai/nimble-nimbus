@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nimble Nimbus — UI/UX Design System</title>
+  <link rel="icon" type="image/png" href="/NN-logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canvas-top: #113264;
+      --canvas-bottom: #245EA6;
+      --display: #8EC5FC;
+      --accent: #EAF2FD;
+      --body: #D4E5F9;
+      --subtext: #5B8EC2;
+      --line: rgba(212, 229, 249, 0.25);
+      --wash: rgba(142, 197, 252, 0.12);
+      --app-font-sans: 'Manrope', sans-serif;
+      --app-font-mono: 'DM Mono', monospace;
+      --app-font-display: 'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--canvas-top);
+      color: var(--body);
+      font-family: var(--app-font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      z-index: 99;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 60px);
+    }
+
+    header.top-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(17, 50, 100, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+
+    .top-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: var(--app-font-display);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+    }
+
+    .brand img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .mono {
+      font-family: var(--app-font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--subtext);
+    }
+
+    .display {
+      font-family: var(--app-font-display);
+      font-weight: 600;
+      color: var(--display);
+      letter-spacing: -0.06em;
+    }
+
+    .display em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-intro {
+      padding: 90px 0 60px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-kicker .line {
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--display);
+    }
+
+    h1.hero-title {
+      font-size: clamp(42px, 6vw, 84px);
+      line-height: 0.9;
+      margin-bottom: 24px;
+    }
+
+    p.lead-text {
+      font-size: 17px;
+      color: var(--body);
+      max-width: 680px;
+      font-weight: 500;
+    }
+
+    section.spec-section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2.section-heading {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.0;
+      margin-bottom: 36px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    /* Color Swatch Card */
+    .swatch-card {
+      border: 1px solid var(--line);
+      background: rgba(17, 50, 100, 0.4);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .swatch-card:hover {
+      border-color: var(--display);
+      transform: translateY(-2px);
+    }
+
+    .swatch-box {
+      width: 100%;
+      height: 90px;
+      border: 1px solid var(--line);
+    }
+
+    .swatch-info strong {
+      display: block;
+      color: var(--accent);
+      font-size: 15px;
+      font-family: var(--app-font-display);
+    }
+
+    .swatch-info span {
+      font-family: var(--app-font-mono);
+      font-size: 12px;
+      color: var(--subtext);
+    }
+
+    .swatch-info p {
+      font-size: 13px;
+      margin-top: 6px;
+      color: var(--body);
+    }
+
+    /* Type Specimens */
+    .type-specimen {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .type-specimen:last-child {
+      border-bottom: none;
+    }
+
+    .type-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    /* Component Demos */
+    .component-box {
+      border: 1px solid var(--line);
+      padding: 30px;
+      background: rgba(17, 50, 100, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border: 1px solid var(--display);
+      color: var(--display);
+      text-decoration: none;
+      font-family: var(--app-font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      width: fit-content;
+    }
+
+    .btn-cta:hover {
+      background: var(--display);
+      color: var(--canvas-top);
+      transform: translateY(-2px);
+    }
+
+    .input-demo {
+      background: rgba(17, 50, 100, 0.6);
+      border: 1px solid var(--line);
+      color: var(--accent);
+      padding: 14px 16px;
+      font-size: 15px;
+      width: 100%;
+      outline: none;
+      font-family: var(--app-font-sans);
+      transition: border-color 0.2s ease;
+    }
+
+    .input-demo:focus {
+      border-color: var(--display);
+    }
+
+    .incubation-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 20px;
+    }
+
+    .incubation-col {
+      padding: 24px 20px 24px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .incubation-col:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .incubation-col + .incubation-col {
+      padding-left: 20px;
+    }
+
+    .incubation-col h3 {
+      font-family: var(--app-font-display);
+      font-size: 24px;
+      color: var(--accent);
+      margin: 20px 0 8px;
+    }
+
+    .incubation-col p {
+      font-size: 13px;
+      color: var(--body);
+    }
+
+    footer.footer-note {
+      padding: 50px 0;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .incubation-row { grid-template-columns: 1fr; }
+      .incubation-col { border-right: none; border-bottom: 1px solid var(--line); padding: 20px 0; }
+      .incubation-col + .incubation-col { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <a href="/" class="brand">
+        <img src="/NN-logo-transparent.png" alt="Logo">
+        <span>Nimble Nimbus</span>
+      </a>
+      <span class="mono">Design System Spec / v1.0</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Intro -->
+    <section class="hero-intro">
+      <div class="section-kicker">
+        <span class="line"></span>
+        <span class="mono">Design Foundation / UI &amp; UX System</span>
+      </div>
+      <h1 class="display hero-title">The visual language of <em>altitude</em> &amp; <em>clarity.</em></h1>
+      <p class="lead-text">Nimble Nimbus combines deep atmospheric blues, sharp 0px architectural geometry, high-impact display typography, and ethereal 3D WebGL motion.</p>
+    </section>
+
+    <!-- Color Palette -->
+    <section class="spec-section">
+      <div class="section-kicker">
+        <span class="line"></span>
+        <span class="mono">01 / Atmospheric Color Tokens</span>
+      </div>
+      <h2 class="display section-heading">Harmonious <em>light &amp; depth</em> palette.</h2>
+      <div class="grid-4">
+        <div class="swatch-card" onclick="navigator.clipboard.writeText('#113264'); alert('Copied #113264')">
+          <div class="swatch-box" style="background: #113264;"></div>
+          <div class="swatch-info">
+            <strong>--canvas-top</strong>
+            <span>#113264</span>
+            <p>Deep twilight navy. Primary canvas &amp; nav background.</p>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="navigator.clipboard.writeText('#245EA6'); alert('Copied #245EA6')">
+          <div class="swatch-box" style="background: #245EA6;"></div>
+          <div class="swatch-info">
+            <strong>--canvas-bottom</strong>
+            <span>#245EA6</span>
+            <p>Horizon blue. Bottom gradient depth transition.</p>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="navigator.clipboard.writeText('#8EC5FC'); alert('Copied #8EC5FC')">
+          <div class="swatch-box" style="background: #8EC5FC;"></div>
+          <div class="swatch-info">
+            <strong>--display</strong>
+            <span>#8EC5FC</span>
+            <p>Soft sky blue. Primary display heading tone.</p>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="navigator.clipboard.writeText('#EAF2FD'); alert('Copied #EAF2FD')">
+          <div class="swatch-box" style="background: #EAF2FD;"></div>
+          <div class="swatch-info">
+            <strong>--accent</strong>
+            <span>#EAF2FD</span>
+            <p>Brilliant white. Two-tone &lt;em&gt; emphasis highlights.</p>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="navigator.clipboard.writeText('#D4E5F9'); alert('Copied #D4E5F9')">
+          <div class="swatch-box" style="background: #D4E5F9;"></div>
+          <div class="swatch-info">
+            <strong>--body</strong>
+            <span>#D4E5F9</span>
+            <p>Light periwinkle. High-readability editorial copy.</p>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="navigator.clipboard.writeText('#5B8EC2'); alert('Copied #5B8EC2')">
+          <div class="swatch-box" style="background: #5B8EC2;"></div>
+          <div class="swatch-info">
+            <strong>--subtext</strong>
+            <span>#5B8EC2</span>
+            <p>Muted steel blue. Metadata, dates &amp; kicker labels.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-box" style="background: rgba(212, 229, 249, 0.25);"></div>
+          <div class="swatch-info">
+            <strong>--line</strong>
+            <span>rgba(212, 229, 249, 0.25)</span>
+            <p>1px hairline dividers &amp; grid borders.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-box" style="background: rgba(142, 197, 252, 0.12);"></div>
+          <div class="swatch-info">
+            <strong>--wash</strong>
+            <span>rgba(142, 197, 252, 0.12)</span>
+            <p>Hover surfaces &amp; interactive row highlights.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="spec-section">
+      <div class="section-kicker">
+        <span class="line"></span>
+        <span class="mono">02 / Typography Hierarchy</span>
+      </div>
+      <h2 class="display section-heading">Three-tier <em>editorial</em> typographic scale.</h2>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="mono">Display Headline / Space Grotesk 600</span>
+          <span class="mono">clamp(47px, 6.8vw, 98px) · tracking -0.075em</span>
+        </div>
+        <h1 class="display" style="font-size: clamp(38px, 5.5vw, 76px); line-height: 0.9;">Make <em>altitude</em> for the <em>idea.</em></h1>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="mono">Section Subheading / Space Grotesk 600</span>
+          <span class="mono">clamp(28px, 4vw, 44px)</span>
+        </div>
+        <h2 class="display" style="font-size: clamp(24px, 3.5vw, 40px); line-height: 1.05;">From <em>idea</em> to <em>reality.</em></h2>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="mono">Body Text / Manrope 500-600</span>
+          <span class="mono">15px - 17px · line-height 1.6</span>
+        </div>
+        <p style="max-width: 650px; font-size: 16px;">Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony. We turn the fog into a decision through rapid solo discovery and working prototypes.</p>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="mono">Technical Kickers &amp; Metadata / DM Mono 500</span>
+          <span class="mono">10px - 11px · uppercase · tracking 0.1em</span>
+        </div>
+        <div class="mono" style="color: var(--display);">Nimble Nimbus / 01 · Background &amp; Mission · 14.05.25</div>
+      </div>
+    </section>
+
+    <!-- Layout & Components -->
+    <section class="spec-section">
+      <div class="section-kicker">
+        <span class="line"></span>
+        <span class="mono">03 / Layout &amp; Components</span>
+      </div>
+      <h2 class="display section-heading">Brutalist <em>zero-radius</em> components.</h2>
+
+      <div class="grid-2">
+        <div class="component-box">
+          <span class="mono">Call To Action &amp; Navigation Buttons</span>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="#demo" class="btn-cta">Enter Ventures &rarr;</a>
+            <a href="#demo" class="btn-cta" style="border-color: var(--accent); color: var(--accent);">Get In Touch</a>
+          </div>
+          <span class="mono">Input Fields</span>
+          <input type="text" class="input-demo" placeholder="Describe your idea in one sentence..." readonly value="Your idea here">
+        </div>
+
+        <div class="component-box">
+          <span class="mono">Editorial Two-Column Split (1.2fr / 0.8fr)</span>
+          <p style="font-size: 14px;">Asymmetrical split grid layouts pair massive display headlines against concise, right-aligned context notes to maximize negative space and editorial pacing.</p>
+          <div class="mono" style="color: var(--display); padding: 12px; border: 1px dashed var(--line);">
+            display: grid; grid-template-columns: 1.2fr .8fr; gap: 8vw;
+          </div>
+        </div>
+      </div>
+
+      <!-- Incubation Line Pattern -->
+      <div style="margin-top: 40px;">
+        <span class="mono">Incubation Line Grid Pattern</span>
+        <div class="incubation-row">
+          <div class="incubation-col">
+            <span class="mono">01</span>
+            <h3>Discover</h3>
+            <p>Name the real question before anyone starts decorating the answer.</p>
+          </div>
+          <div class="incubation-col">
+            <span class="mono">02</span>
+            <h3>Prototype</h3>
+            <p>Make the smallest convincing thing, then put it in front of people.</p>
+          </div>
+          <div class="incubation-col">
+            <span class="mono">03</span>
+            <h3>Accelerate</h3>
+            <p>Turn battle-tested prototypes into an MVP ready for growth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motion & Interaction -->
+    <section class="spec-section">
+      <div class="section-kicker">
+        <span class="line"></span>
+        <span class="mono">04 / Motion &amp; Interaction</span>
+      </div>
+      <h2 class="display section-heading">Living <em>WebGL &amp; scroll</em> dynamics.</h2>
+      <div class="grid-2">
+        <div class="component-box">
+          <strong style="color: var(--accent); font-family: var(--app-font-display); font-size: 20px;">Three.js 3D Nimbus Cloud</strong>
+          <p style="font-size: 14px;">Interactive GLTF 3D model with dual directional/hemisphere rim lighting, mouse-move parallax rotation, and scroll-bound altitude descent.</p>
+          <ul class="mono" style="list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li>&bull; Model: /nimbus-cloud.glb</li>
+            <li>&bull; HemisphereLight: #EAF2FD / #113264 (2.5)</li>
+            <li>&bull; DirectionalLight: #8EC5FC (3.0)</li>
+            <li>&bull; Tilt Easing: 0.018 interpolation</li>
+          </ul>
+        </div>
+
+        <div class="component-box">
+          <strong style="color: var(--accent); font-family: var(--app-font-display); font-size: 20px;">Hero Rain Navigation</strong>
+          <p style="font-size: 14px;">Animated menu labels descending from under the cloud in a continuous loop with randomized staggered delays [0s, 2s, 3s, 4s, 5s] and gentle sinusoidal wobble.</p>
+          <ul class="mono" style="list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li>&bull; Fall Duration: 22s - 25s</li>
+            <li>&bull; Wobble Frequency: 9s ease-in-out</li>
+            <li>&bull; Hover: Pauses animation &amp; brightens to #8EC5FC</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-note">
+    <div class="container">
+      <div class="brand" style="justify-content: center; margin-bottom: 12px;">
+        <img src="/NN-logo-transparent.png" alt="Logo">
+        <span>Nimble Nimbus</span>
+      </div>
+      <p class="mono">Design System Specification &copy; 2026 Nimble Nimbus. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
