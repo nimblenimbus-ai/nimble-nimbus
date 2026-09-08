@@ -1,0 +1,78 @@
+import { Shell } from "@/components/layout/shell";
+import { PageHero } from "@/components/layout/page-hero";
+import { RouteBridge } from "@/components/layout/route-bridge";
+
+export default function Labs() {
+  return (
+    <Shell>
+      <PageHero
+        number="02"
+        title="Find the"
+        emphasis="signal."
+        description="Rapid solo discovery and prototyping sprints for the moment when the question is still more valuable than the answer."
+      />
+      <section
+        className="section editorial-body"
+        data-testid="section-labs-sprint"
+      >
+        <div className="section-inner">
+          <div className="section-kicker reveal">
+            <span className="line" aria-hidden="true" />
+            <span className="mono">Labs / Short runway, real signal</span>
+          </div>
+          <div className="lab-sprint">
+            <div className="sprint-figure reveal" aria-hidden="true">
+              <div className="sprint-orbit" />
+              <span className="sprint-word">Discover</span>
+            </div>
+            <div className="sprint-copy reveal delay-1">
+              <strong>
+                One focused sprint.
+                <br />A more useful unknown.
+              </strong>
+              <p>
+                We work beside you, not around you. A compact run of interviews,
+                framing, experiments, and one convincing prototype turns the fog
+                into a decision.
+              </p>
+              <p>
+                Labs is designed for solo founders, independent operators, and
+                small teams before the overhead arrives.
+              </p>
+            </div>
+          </div>
+          <div className="incubation-line">
+            {[
+              [
+                "01",
+                "Frame",
+                "The sharpest version of the problem and the audience who feels it.",
+              ],
+              [
+                "02",
+                "Test",
+                "Fast artifacts that invite a real response instead of a polite opinion.",
+              ],
+              [
+                "03",
+                "Hand off",
+                "A clear next move: build, partner, pause, or let it go.",
+              ],
+            ].map(([number, title, copy]) => (
+              <article className="incubation-item reveal" key={number}>
+                <span className="mono">{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <RouteBridge
+        next="/ventures"
+        nextLabel="Enter Ventures"
+        label="Next / Solution acceleration until MVP"
+      />
+    </Shell>
+  );
+}
