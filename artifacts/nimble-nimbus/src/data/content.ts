@@ -96,4 +96,14 @@ export const articles: readonly Article[] = [
     link: "https://nimblenimbus.substack.com/p/nibble-01-escaping-the-feature-factory",
     linkText: "Read full post on Substack",
   },
+  {
+    number: "05",
+    category: "Nibble / 03 min",
+    title: "Nibble #02: Writing code is no longer the bottleneck",
+    intro:
+      "Why the next tech wave belongs to seasoned builders with deep domain expertise and operational discernment.",
+    body: "For decades, tech romanticised the twenty-something founder hacking in a hoodie. But with the mechanical production layer commoditised by modern agentic workflows, writing code is no longer the bottleneck. When execution labour drops to near zero, the scarce assets commanding maximum leverage are taste, domain knowledge, and operational discernment. Seasoned operators who know where legacy systems fail can now deploy autonomous agent fleets to build, test, and ship working solutions in days rather than months.",
+    link: "https://nimblenimbus.substack.com/p/nibbles-02-writing-code-is-no-longer",
+    linkText: "Read full post on Substack",
+  },
 ] as const;
