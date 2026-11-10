@@ -65,14 +65,12 @@ export default function Nexus() {
             const Icon = role.icon;
             return (
               <article className="roster-item reveal" key={role.title}>
-                <div className="roster-icon-wrap" aria-hidden="true">
-                  <Icon size={20} strokeWidth={1.7} />
-                </div>
-                <div className="roster-content">
-                  <div className="roster-tag mono">{role.tag}</div>
+                <div className="roster-tag mono">{role.tag}</div>
+                <div className="roster-heading">
+                  <Icon size={24} strokeWidth={1.8} className="roster-icon" aria-hidden="true" />
                   <h3>{role.title}</h3>
-                  <p>{role.copy}</p>
                 </div>
+                <p>{role.copy}</p>
               </article>
             );
           })}

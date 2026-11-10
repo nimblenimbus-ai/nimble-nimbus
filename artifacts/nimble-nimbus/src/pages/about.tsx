@@ -1,7 +1,15 @@
+import { Compass, Zap, Target, Sparkles } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
 import { principles } from "@/data/content";
+
+const principleIcons: Record<string, typeof Compass> = {
+  Altitude: Compass,
+  Velocity: Zap,
+  Candor: Target,
+  Care: Sparkles,
+};
 
 export default function About() {
   return (
@@ -46,13 +54,19 @@ export default function About() {
             <em>specific.</em>
           </p>
           <div className="principles">
-            {principles.map(([title, copy], index) => (
-              <article className="principle reveal" key={title}>
-                <span className="mono">{`0${index + 1}`}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
+            {principles.map((item) => {
+              const Icon = principleIcons[item.title] ?? Compass;
+              return (
+                <article className="principle reveal" key={item.title}>
+                  <div className="principle-meta">
+                    <Icon size={16} strokeWidth={1.8} className="principle-icon" aria-hidden="true" />
+                    <span className="principle-tag mono">{item.tag}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, BookOpen, NotebookPen, Sparkles, X } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
-import { articles, type Article } from "@/data/content";
+import { articles, type Article, type PublicationType } from "@/data/content";
+
+const publicationIcons: Record<PublicationType, typeof Sparkles> = {
+  Nibble: Sparkles,
+  "Field Note": NotebookPen,
+  "Deep Dive": BookOpen,
+};
 
 export default function Insights() {
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
@@ -24,7 +30,7 @@ export default function Insights() {
   return (
     <Shell>
       <PageHero
-        tag="Knowledge // Dispatches & Nibbles"
+        tag="Knowledge // Field Notes & Nibbles"
         title="Notes from"
         emphasis="above."
         description="A Knowledge Base & Deep Dives publication for the questions behind the work. Read slowly. Take what is useful."
@@ -39,7 +45,7 @@ export default function Insights() {
               <div className="section-kicker reveal">
                 <span className="line" aria-hidden="true" />
                 <span className="mono">
-                  Latest dispatch / Thought bubbles worth sharing
+                  Latest field note / Thought bubbles worth sharing
                 </span>
               </div>
               <h2 className="display reveal">
@@ -57,25 +63,31 @@ export default function Insights() {
             </p>
           </div>
           <div className="article-list" data-testid="list-insights">
-            {articles.map((article) => (
-              <button
-                className="article-row reveal"
-                type="button"
-                key={article.number}
-                onClick={() => setActiveArticle(article)}
-                data-testid={`button-article-${article.number}`}
-              >
-                <span className="article-index mono">{article.number}</span>
-                <span className="article-title">{article.title}</span>
-                <span className="article-meta mono">{article.category}</span>
-                <ArrowUpRight
-                  className="article-arrow"
-                  size={19}
-                  strokeWidth={1.4}
-                  aria-hidden="true"
-                />
-              </button>
-            ))}
+            {articles.map((article) => {
+              const Icon = publicationIcons[article.type];
+              return (
+                <button
+                  className="article-row reveal"
+                  type="button"
+                  key={article.id}
+                  onClick={() => setActiveArticle(article)}
+                  data-testid={`button-article-${article.id}`}
+                >
+                  <span className="article-type-badge mono">
+                    <Icon size={14} strokeWidth={1.8} className="badge-icon" aria-hidden="true" />
+                    <span>{article.type.toUpperCase()}</span>
+                  </span>
+                  <span className="article-title">{article.title}</span>
+                  <span className="article-meta mono">{article.readTime}</span>
+                  <ArrowUpRight
+                    className="article-arrow"
+                    size={19}
+                    strokeWidth={1.4}
+                    aria-hidden="true"
+                  />
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -109,9 +121,19 @@ export default function Insights() {
             >
               <X size={18} strokeWidth={1.5} />
             </button>
-            <span className="mono">
-              {activeArticle.number} / {activeArticle.category}
-            </span>
+            <div className="reader-tag-bar mono">
+              {(() => {
+                const ActiveIcon = publicationIcons[activeArticle.type];
+                return (
+                  <>
+                    <ActiveIcon size={14} strokeWidth={1.8} className="reader-icon" aria-hidden="true" />
+                    <span>{activeArticle.type.toUpperCase()}</span>
+                    <span className="reader-sep">/</span>
+                    <span>{activeArticle.readTime}</span>
+                  </>
+                );
+              })()}
+            </div>
             <h2 id="insight-title">{activeArticle.title}</h2>
             <p>{activeArticle.intro}</p>
             <p>{activeArticle.body}</p>

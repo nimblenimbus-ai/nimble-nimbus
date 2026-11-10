@@ -634,6 +634,24 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .quote-mark em { color: var(--accent); font-style: normal; }
 .principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 6vw; margin-top: 95px; border-top: 1px solid var(--line); }
 .principle { padding: 25px 0 30px; border-bottom: 1px solid var(--line); }
+.principle-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--subtext);
+}
+.principle-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform .25s ease;
+}
+.principle:hover .principle-icon {
+  transform: scale(1.15);
+}
+.principle-tag {
+  font-size: 11px;
+  letter-spacing: .08em;
+}
 .principle h3 { margin: 13px 0 10px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(25px, 3vw, 40px); letter-spacing: -.06em; }
 .principle p { max-width: 310px; margin: 0; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.55; }
 .page-end { background: var(--canvas-bottom); }
@@ -680,27 +698,38 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .incubation-item h3 { margin: 32px 0 12px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: 28px; letter-spacing: -.06em; }
 .incubation-item p { max-width: 240px; margin: 0; color: var(--body); font-size: 13px; font-weight: 600; line-height: 1.55; }
 .nexus-roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8vw; margin-top: 95px; border-top: 1px solid var(--line); }
-.roster-item { display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 26px 0; border-bottom: 1px solid var(--line); }
-.roster-icon-wrap {
-  display: flex;
-  align-items: flex-start;
-  padding-top: 3px;
-  color: var(--accent);
-  opacity: .85;
-  transition: opacity .3s ease, transform .3s ease;
-}
-.roster-item:hover .roster-icon-wrap {
-  opacity: 1;
-  transform: scale(1.08);
-}
+.roster-item { display: block; padding: 26px 0 30px; border-bottom: 1px solid var(--line); }
 .roster-tag {
   font-size: 11px;
   letter-spacing: .08em;
   color: var(--subtext);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
-.roster-item h3 { margin: 0 0 8px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: 28px; letter-spacing: -.06em; }
-.roster-item p { max-width: 300px; margin: 0; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.5; }
+.roster-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+.roster-heading h3 {
+  margin: 0;
+  color: var(--accent);
+  font-family: 'Space Grotesk', var(--app-font-sans);
+  font-size: 28px;
+  letter-spacing: -.06em;
+  line-height: 1.1;
+}
+.roster-heading .roster-icon {
+  color: var(--accent);
+  opacity: .9;
+  flex-shrink: 0;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.roster-item:hover .roster-heading .roster-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.roster-item p { max-width: 320px; margin: 0; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.5; }
 
 /* Insights is intentionally a reading room, not a SaaS card deck. */
 .insights-lead { display: grid; grid-template-columns: 1.2fr .8fr; gap: 8vw; align-items: end; }
@@ -713,7 +742,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .article-list { margin-top: 100px; border-top: 1px solid var(--line); }
 .article-row {
   display: grid;
-  grid-template-columns: 80px 1fr 170px 35px;
+  grid-template-columns: 150px 1fr 100px 35px;
   gap: 18px;
   align-items: center;
   padding: 24px 0;
@@ -725,11 +754,46 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transition: color .25s ease, background-color .25s ease, padding .25s ease;
 }
 .article-row:hover, .article-row:focus-visible { padding-left: 15px; padding-right: 15px; color: var(--display); background: var(--wash); }
-.article-index { color: var(--display); }
+.article-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--subtext);
+}
+.article-type-badge .badge-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform .25s ease, color .25s ease;
+}
+.article-row:hover .article-type-badge .badge-icon {
+  transform: scale(1.15);
+  color: var(--display);
+}
+.article-row:hover .article-type-badge {
+  color: var(--display);
+}
 .article-title { font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(22px, 3vw, 39px); letter-spacing: -.065em; line-height: .95; }
 .article-meta { color: var(--subtext); text-align: right; }
 .article-arrow { transition: transform .25s ease; }
 .article-row:hover .article-arrow { transform: translate(4px, -4px); }
+.reader-tag-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--subtext);
+  margin-bottom: 20px;
+}
+.reader-tag-bar .reader-icon {
+  color: var(--accent);
+}
+.reader-sep {
+  color: var(--display);
+  opacity: .5;
+}
 .insights-reader-backdrop { position: fixed; z-index: 60; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(17,50,100,.86); }
 .insights-reader { position: relative; width: min(800px, 100%); max-height: calc(100dvh - 40px); overflow: auto; padding: clamp(28px, 6vw, 70px); color: var(--body); background: var(--canvas-bottom); border: 1px solid rgba(142,197,252,.45); }
 .reader-close { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 38px; height: 38px; color: var(--accent); background: transparent; border: 1px solid var(--accent); cursor: pointer; }
@@ -794,9 +858,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .incubation-item h3 { margin-top: 28px; }
   .publication-note { margin-top: 35px; }
   .article-list { margin-top: 68px; }
-  .article-row { grid-template-columns: 45px 1fr 30px; gap: 12px; }
-  .article-meta { grid-column: 2; grid-row: 2; text-align: left; }
-  .article-arrow { grid-column: 3; grid-row: 1 / span 2; }
+  .article-row { grid-template-columns: 1fr 30px; gap: 8px; }
+  .article-type-badge { grid-column: 1; margin-bottom: 2px; }
+  .article-title { grid-column: 1; }
+  .article-meta { grid-column: 1; text-align: left; }
+  .article-arrow { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
   .site-footer { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 480px) {

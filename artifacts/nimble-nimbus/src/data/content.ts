@@ -1,6 +1,9 @@
+export type PublicationType = "Nibble" | "Field Note" | "Deep Dive";
+
 export interface Article {
-  number: string;
-  category: string;
+  id: string;
+  type: PublicationType;
+  readTime: string;
   title: string;
   intro: string;
   body: string;
@@ -47,52 +50,69 @@ export const pathSteps: readonly PathStep[] = [
   },
 ] as const;
 
-export const principles = [
-  [
-    "Altitude",
-    "The useful distance between a bright idea and a better decision.",
-  ],
-  ["Velocity", "Forward motion without confusing speed for progress."],
-  [
-    "Candor",
-    "A clear read on what is working, what is not, and what to try next.",
-  ],
-  [
-    "Care",
-    "Small details are not ceremony when they change how an idea lands.",
-  ],
-] as const;
+export interface Principle {
+  tag: string;
+  title: string;
+  copy: string;
+}
 
-export type Principle = (typeof principles)[number];
+export const principles: readonly Principle[] = [
+  {
+    tag: "AXIS // PERSPECTIVE",
+    title: "Altitude",
+    copy: "The useful distance between a bright idea and a better decision.",
+  },
+  {
+    tag: "AXIS // MOMENTUM",
+    title: "Velocity",
+    copy: "Forward motion without confusing speed for progress.",
+  },
+  {
+    tag: "AXIS // TRUTH",
+    title: "Candor",
+    copy: "A clear read on what is working, what is not, and what to try next.",
+  },
+  {
+    tag: "AXIS // CRAFT",
+    title: "Care",
+    copy: "Small details are not ceremony when they change how an idea lands.",
+  },
+] as const;
 
 export const articles: readonly Article[] = [
   {
-    number: "01",
-    category: "Field note / 02 min",
+    id: "field-note-altitude",
+    type: "Field Note",
+    readTime: "02 min",
     title: "The altitude test: knowing when to zoom out",
     intro:
       "A practical note on finding the useful distance from a problem before the solution starts making noise.",
     body: "The first version of a product is rarely a product. It is a point of view with enough shape to be argued with. The altitude test is simple: can you describe the change you want to create without describing the interface? If not, go higher. The sharper question usually arrives just after the obvious answer.",
   },
   {
-    number: "02",
-    category: "Deep dive / 02 min",
+    id: "deep-dive-prototype",
+    type: "Deep Dive",
+    readTime: "04 min",
     title: "A prototype is a conversation, not a miniature launch",
     intro:
       "What to build when certainty is expensive and the useful signal is still hiding.",
     body: "A prototype earns its keep by making a conversation more specific. It should expose the risk, not disguise it. We look for one behavior, one audience, and one honest moment of friction. Everything else can wait until the question has earned more detail.",
+    link: "https://nimblenimbus.substack.com/",
+    linkText: "Read deep dive on Substack",
   },
   {
-    number: "03",
-    category: "Dispatch / 02 min",
+    id: "field-note-collaborator",
+    type: "Field Note",
+    readTime: "02 min",
     title: "The quiet power of the right collaborator",
     intro:
       "A field guide to knowing which missing perspective can move an idea forward.",
     body: "Partnership is not a roster exercise. The best collaborator changes the quality of the question in the room. We bring people in for a distinct point of view, a specific craft, or a lived relationship to the problem — never just to make the team look complete.",
   },
   {
-    number: "04",
-    category: "Nibble / 03 min",
+    id: "nibble-01-feature-factory",
+    type: "Nibble",
+    readTime: "03 min",
     title: "Nibble #01: Escaping the Feature Factory",
     intro:
       "How to move software organisations from shipping endless outputs to managing by real outcomes.",
@@ -101,8 +121,9 @@ export const articles: readonly Article[] = [
     linkText: "Read full post on Substack",
   },
   {
-    number: "05",
-    category: "Nibble / 03 min",
+    id: "nibble-02-code-bottleneck",
+    type: "Nibble",
+    readTime: "03 min",
     title: "Nibble #02: Writing code is no longer the bottleneck",
     intro:
       "Why the next tech wave belongs to seasoned builders with deep domain expertise and operational discernment.",
