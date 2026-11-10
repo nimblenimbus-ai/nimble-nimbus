@@ -1,11 +1,18 @@
 import { useEffect, useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Compass, Layers, Flame, Network } from "lucide-react";
 import { Link } from "wouter";
 import { NimbusCloud } from "@/components/nimbus-cloud";
 import { HeroRainNav } from "@/components/layout/hero-rain-nav";
 import { Shell } from "@/components/layout/shell";
 import { ContactSection } from "@/components/contact-section";
 import { pathSteps } from "@/data/content";
+
+const pathIcons = {
+  Discover: Compass,
+  Prototype: Layers,
+  Accelerate: Flame,
+  Connect: Network,
+};
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -193,20 +200,26 @@ export default function Home() {
               </p>
             </div>
             <div className="path-grid">
-              {pathSteps.map(({ tag, title, description }) => (
-                <div
-                  className="path-card reveal"
-                  key={title}
-                  data-testid={`item-path-${title.toLowerCase()}`}
-                >
-                  <div className="path-card-meta">
-                    <span className="path-tag mono">{tag}</span>
-                    <span className="path-crosshair mono" aria-hidden="true">+</span>
+              {pathSteps.map(({ tag, title, description }) => {
+                const Icon = pathIcons[title as keyof typeof pathIcons] ?? Compass;
+                return (
+                  <div
+                    className="path-card reveal"
+                    key={title}
+                    data-testid={`item-path-${title.toLowerCase()}`}
+                  >
+                    <div className="path-card-meta">
+                      <div className="taxonomy-eyebrow mono">
+                        <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
+                        <span className="taxonomy-tag">{tag}</span>
+                      </div>
+                      <span className="path-crosshair mono" aria-hidden="true">+</span>
+                    </div>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
                   </div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div className="route-bridge reveal">

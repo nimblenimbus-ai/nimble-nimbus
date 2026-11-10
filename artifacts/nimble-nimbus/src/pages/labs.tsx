@@ -1,6 +1,13 @@
+import { Crosshair, FlaskConical, ArrowUpRight } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
+
+const cycleIcons = {
+  Frame: Crosshair,
+  Test: FlaskConical,
+  "Hand off": ArrowUpRight,
+};
 
 export default function Labs() {
   return (
@@ -58,16 +65,19 @@ export default function Labs() {
                 title: "Hand off",
                 copy: "A clear next move: build, partner, pause, or let it go.",
               },
-            ].map(({ tag, title, copy }) => (
-              <article className="incubation-item reveal" key={title}>
-                <div className="incubation-badge mono">
-                  <span>{tag}</span>
-                  <span className="incubation-arrow" aria-hidden="true">↗</span>
-                </div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
+            ].map(({ tag, title, copy }) => {
+              const Icon = cycleIcons[title as keyof typeof cycleIcons] ?? Crosshair;
+              return (
+                <article className="incubation-item reveal" key={title}>
+                  <div className="taxonomy-eyebrow mono">
+                    <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
+                    <span className="taxonomy-tag">{tag}</span>
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -632,28 +632,35 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .quote-band { background: var(--canvas-top); }
 .quote-mark { margin: 0; max-width: 950px; color: var(--display); font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(43px, 7vw, 105px); letter-spacing: -.08em; line-height: .91; }
 .quote-mark em { color: var(--accent); font-style: normal; }
-.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 6vw; margin-top: 95px; border-top: 1px solid var(--line); }
-.principle { padding: 25px 0 30px; border-bottom: 1px solid var(--line); }
-.principle-meta {
-  display: flex;
+/* Unified Semantic Taxonomy Eyebrow (Applied consistently across all pages) */
+.taxonomy-eyebrow {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--subtext);
-}
-.principle-icon {
-  color: var(--accent);
-  flex-shrink: 0;
-  transition: transform .25s ease;
-}
-.principle:hover .principle-icon {
-  transform: scale(1.15);
-}
-.principle-tag {
+  margin-bottom: 14px;
+  font-family: var(--app-font-mono);
   font-size: 11px;
   letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--subtext);
 }
-.principle h3 { margin: 13px 0 10px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(25px, 3vw, 40px); letter-spacing: -.06em; }
-.principle p { max-width: 310px; margin: 0; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.55; }
+.taxonomy-eyebrow .taxonomy-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform .25s ease, color .25s ease;
+}
+.principle:hover .taxonomy-icon,
+.roster-item:hover .taxonomy-icon,
+.path-card:hover .taxonomy-icon,
+.incubation-item:hover .taxonomy-icon {
+  transform: scale(1.15);
+  color: var(--display);
+}
+
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 6vw; margin-top: 95px; border-top: 1px solid var(--line); }
+.principle { padding: 25px 0 30px; border-bottom: 1px solid var(--line); }
+.principle h3 { margin: 0 0 10px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(25px, 3vw, 40px); letter-spacing: -.06em; line-height: 1.05; }
+.principle p { max-width: 320px; margin: 0; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.55; }
 .page-end { background: var(--canvas-bottom); }
 .page-end .route-bridge { margin-top: 0; }
 
@@ -675,60 +682,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .incubation-item { min-height: 230px; padding: 25px 25px 25px 0; border-right: 1px solid var(--line); }
 .incubation-item + .incubation-item { padding-left: 25px; }
 .incubation-item:last-child { border-right: 0; }
-.incubation-badge {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  letter-spacing: .08em;
-  color: var(--subtext);
-}
-.incubation-arrow {
-  color: var(--display);
-  font-size: 14px;
-  line-height: 1;
-  opacity: .5;
-  transition: transform .3s ease, color .3s ease, opacity .3s ease;
-}
-.incubation-item:hover .incubation-arrow {
-  opacity: 1;
-  transform: translate(2px, -2px);
-  color: var(--accent);
-}
-.incubation-item h3 { margin: 32px 0 12px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: 28px; letter-spacing: -.06em; }
+.incubation-item h3 { margin: 0 0 10px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: 28px; letter-spacing: -.06em; line-height: 1.1; }
 .incubation-item p { max-width: 240px; margin: 0; color: var(--body); font-size: 13px; font-weight: 600; line-height: 1.55; }
 .nexus-roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8vw; margin-top: 95px; border-top: 1px solid var(--line); }
 .roster-item { display: block; padding: 26px 0 30px; border-bottom: 1px solid var(--line); }
-.roster-tag {
-  font-size: 11px;
-  letter-spacing: .08em;
-  color: var(--subtext);
-  margin-bottom: 8px;
-}
-.roster-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 10px;
-}
-.roster-heading h3 {
-  margin: 0;
-  color: var(--accent);
-  font-family: 'Space Grotesk', var(--app-font-sans);
-  font-size: 28px;
-  letter-spacing: -.06em;
-  line-height: 1.1;
-}
-.roster-heading .roster-icon {
-  color: var(--accent);
-  opacity: .9;
-  flex-shrink: 0;
-  transition: transform .25s ease, opacity .25s ease;
-}
-.roster-item:hover .roster-heading .roster-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
+.roster-item h3 { margin: 0 0 10px; color: var(--accent); font-family: 'Space Grotesk', var(--app-font-sans); font-size: 28px; letter-spacing: -.06em; line-height: 1.1; }
 .roster-item p { max-width: 320px; margin: 0; color: var(--body); font-size: 14px; font-weight: 600; line-height: 1.5; }
 
 /* Insights is intentionally a reading room, not a SaaS card deck. */
@@ -754,42 +712,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transition: color .25s ease, background-color .25s ease, padding .25s ease;
 }
 .article-row:hover, .article-row:focus-visible { padding-left: 15px; padding-right: 15px; color: var(--display); background: var(--wash); }
-.article-type-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: .08em;
-  color: var(--subtext);
+.article-row .taxonomy-eyebrow {
+  margin-bottom: 0;
 }
-.article-type-badge .badge-icon {
-  color: var(--accent);
-  flex-shrink: 0;
-  transition: transform .25s ease, color .25s ease;
-}
-.article-row:hover .article-type-badge .badge-icon {
-  transform: scale(1.15);
-  color: var(--display);
-}
-.article-row:hover .article-type-badge {
+.article-row:hover .taxonomy-eyebrow {
   color: var(--display);
 }
 .article-title { font-family: 'Space Grotesk', var(--app-font-sans); font-size: clamp(22px, 3vw, 39px); letter-spacing: -.065em; line-height: .95; }
 .article-meta { color: var(--subtext); text-align: right; }
 .article-arrow { transition: transform .25s ease; }
 .article-row:hover .article-arrow { transform: translate(4px, -4px); }
-.reader-tag-bar {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: .08em;
-  color: var(--subtext);
-  margin-bottom: 20px;
-}
-.reader-tag-bar .reader-icon {
-  color: var(--accent);
-}
 .reader-sep {
   color: var(--display);
   opacity: .5;
@@ -859,7 +791,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .publication-note { margin-top: 35px; }
   .article-list { margin-top: 68px; }
   .article-row { grid-template-columns: 1fr 30px; gap: 8px; }
-  .article-type-badge { grid-column: 1; margin-bottom: 2px; }
+  .article-row .taxonomy-eyebrow { grid-column: 1; margin-bottom: 2px; }
   .article-title { grid-column: 1; }
   .article-meta { grid-column: 1; text-align: left; }
   .article-arrow { grid-column: 2; grid-row: 1 / span 3; align-self: center; }

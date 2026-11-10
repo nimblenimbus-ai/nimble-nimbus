@@ -73,9 +73,9 @@ export default function Insights() {
                   onClick={() => setActiveArticle(article)}
                   data-testid={`button-article-${article.id}`}
                 >
-                  <span className="article-type-badge mono">
-                    <Icon size={14} strokeWidth={1.8} className="badge-icon" aria-hidden="true" />
-                    <span>{article.type.toUpperCase()}</span>
+                  <span className="taxonomy-eyebrow mono">
+                    <Icon size={14} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
+                    <span className="taxonomy-tag">{article.type.toUpperCase()}</span>
                   </span>
                   <span className="article-title">{article.title}</span>
                   <span className="article-meta mono">{article.readTime}</span>
@@ -121,14 +121,14 @@ export default function Insights() {
             >
               <X size={18} strokeWidth={1.5} />
             </button>
-            <div className="reader-tag-bar mono">
+            <div className="taxonomy-eyebrow mono">
               {(() => {
                 const ActiveIcon = publicationIcons[activeArticle.type];
                 return (
                   <>
-                    <ActiveIcon size={14} strokeWidth={1.8} className="reader-icon" aria-hidden="true" />
-                    <span>{activeArticle.type.toUpperCase()}</span>
-                    <span className="reader-sep">/</span>
+                    <ActiveIcon size={14} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
+                    <span className="taxonomy-tag">{activeArticle.type.toUpperCase()}</span>
+                    <span className="reader-sep">//</span>
                     <span>{activeArticle.readTime}</span>
                   </>
                 );

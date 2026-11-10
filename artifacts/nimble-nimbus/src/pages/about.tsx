@@ -58,9 +58,9 @@ export default function About() {
               const Icon = principleIcons[item.title] ?? Compass;
               return (
                 <article className="principle reveal" key={item.title}>
-                  <div className="principle-meta">
-                    <Icon size={16} strokeWidth={1.8} className="principle-icon" aria-hidden="true" />
-                    <span className="principle-tag mono">{item.tag}</span>
+                  <div className="taxonomy-eyebrow mono">
+                    <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
+                    <span className="taxonomy-tag">{item.tag}</span>
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.copy}</p>
