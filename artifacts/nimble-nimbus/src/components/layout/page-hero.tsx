@@ -1,5 +1,6 @@
 interface PageHeroProps {
-  number: string;
+  number?: string;
+  tag?: string;
   title: string;
   emphasis: string;
   description: string;
@@ -7,15 +8,21 @@ interface PageHeroProps {
 
 export function PageHero({
   number,
+  tag,
   title,
   emphasis,
   description,
 }: PageHeroProps) {
+  const kickerLabel = tag ?? (number ? `Nimble Nimbus / ${number}` : "Nimble Nimbus");
+  const testId = tag
+    ? tag.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+    : (number ?? "hero");
+
   return (
-    <section className="page-hero" data-testid={`section-page-hero-${number}`}>
+    <section className="page-hero" data-testid={`section-page-hero-${testId}`}>
       <div className="page-hero-inner">
         <div className="page-kicker mono reveal visible">
-          Nimble Nimbus / {number}
+          {tag ? `Nimble Nimbus // ${tag}` : kickerLabel}
         </div>
         <h1 className="page-title display reveal visible delay-1">
           {title}

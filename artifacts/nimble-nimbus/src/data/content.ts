@@ -18,30 +18,34 @@ export const navItems = [
 
 export type NavItem = (typeof navItems)[number];
 
-export const pathSteps = [
-  [
-    "01",
-    "Discover",
-    "Name the real question before anyone starts decorating the answer.",
-  ],
-  [
-    "02",
-    "Prototype",
-    "Make the smallest convincing thing, then put it in the hands of people who matter.",
-  ],
-  [
-    "03",
-    "Accelerate",
-    "Turn battle-tested prototypes into a working MVP and validate with real users.",
-  ],
-  [
-    "04",
-    "Connect",
-    "Bring in the right talent and skills to gain the momentum it deserves.",
-  ],
-] as const;
+export interface PathStep {
+  tag: string;
+  title: string;
+  description: string;
+}
 
-export type PathStep = (typeof pathSteps)[number];
+export const pathSteps: readonly PathStep[] = [
+  {
+    tag: "FOCUS // DISCOVERY",
+    title: "Discover",
+    description: "Name the real question before anyone starts decorating the answer.",
+  },
+  {
+    tag: "FOCUS // PROTOTYPING",
+    title: "Prototype",
+    description: "Make the smallest convincing thing, then put it in the hands of people who matter.",
+  },
+  {
+    tag: "FOCUS // ACCELERATION",
+    title: "Accelerate",
+    description: "Turn battle-tested prototypes into a working MVP and validate with real users.",
+  },
+  {
+    tag: "FOCUS // NETWORK",
+    title: "Connect",
+    description: "Bring in the right talent and skills to gain the momentum it deserves.",
+  },
+] as const;
 
 export const principles = [
   [

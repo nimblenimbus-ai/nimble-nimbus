@@ -7,7 +7,7 @@ export default function About() {
   return (
     <Shell>
       <PageHero
-        number="01"
+        tag="Studio // Philosophy"
         title="An idea accelerator for"
         emphasis="clear skies."
         description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony."

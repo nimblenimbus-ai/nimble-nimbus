@@ -6,7 +6,7 @@ export default function Ventures() {
   return (
     <Shell>
       <PageHero
-        number="03"
+        tag="Discipline // Ventures (Nova)"
         title="Stay for the"
         emphasis="build."
         description="Solution acceleration until an MVP is built, tested, and ready for the kind of attention that makes it stronger."
@@ -34,24 +34,27 @@ export default function Ventures() {
         </div>
         <div className="incubation-line">
           {[
-            [
-              "01",
-              "Shape",
-              "Turn the prototype into a product point of view with edges.",
-            ],
-            [
-              "02",
-              "Make",
-              "Design, engineering, and the unglamorous decisions between them.",
-            ],
-            [
-              "03",
-              "Prove",
-              "Put the MVP in the world and learn what deserves another mile.",
-            ],
-          ].map(([number, title, copy]) => (
-            <article className="incubation-item reveal" key={number}>
-              <span className="mono">{number}</span>
+            {
+              tag: "STAGE // SHAPE",
+              title: "Shape",
+              copy: "Turn the prototype into a product point of view with edges.",
+            },
+            {
+              tag: "STAGE // MAKE",
+              title: "Make",
+              copy: "Design, engineering, and the unglamorous decisions between them.",
+            },
+            {
+              tag: "STAGE // PROVE",
+              title: "Prove",
+              copy: "Put the MVP in the world and learn what deserves another mile.",
+            },
+          ].map(({ tag, title, copy }) => (
+            <article className="incubation-item reveal" key={title}>
+              <div className="incubation-badge mono">
+                <span>{tag}</span>
+                <span className="incubation-arrow" aria-hidden="true">↗</span>
+              </div>
               <h3>{title}</h3>
               <p>{copy}</p>
             </article>

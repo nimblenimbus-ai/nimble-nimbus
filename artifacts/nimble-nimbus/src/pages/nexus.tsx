@@ -1,12 +1,40 @@
+import { Cpu, Gauge, PenTool, Binary } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
+
+const rosterRoles = [
+  {
+    tag: "ROLE // ARCHITECTURE",
+    title: "Builders",
+    copy: "Technical range for making the first durable version.",
+    icon: Cpu,
+  },
+  {
+    tag: "ROLE // OPERATIONS",
+    title: "Operators",
+    copy: "Practical judgment when the product meets the world.",
+    icon: Gauge,
+  },
+  {
+    tag: "ROLE // NARRATIVE",
+    title: "Storytellers",
+    copy: "Language and narrative that make the idea legible.",
+    icon: PenTool,
+  },
+  {
+    tag: "ROLE // SPECIALISTS",
+    title: "Specialists",
+    copy: "Deep context for the exact edge that matters.",
+    icon: Binary,
+  },
+];
 
 export default function Nexus() {
   return (
     <Shell>
       <PageHero
-        number="04"
+        tag="Guild // Talent Orbit"
         title="Bring the right"
         emphasis="orbit."
         description="The Talent Syndicate & Partnership layer that brings an idea to life — with the exact people its next chapter needs."
@@ -33,36 +61,21 @@ export default function Nexus() {
           </div>
         </div>
         <div className="nexus-roster">
-          {[
-            [
-              "01",
-              "Builders",
-              "Technical range for making the first durable version.",
-            ],
-            [
-              "02",
-              "Operators",
-              "Practical judgment when the product meets the world.",
-            ],
-            [
-              "03",
-              "Storytellers",
-              "Language and narrative that make the idea legible.",
-            ],
-            [
-              "04",
-              "Specialists",
-              "Deep context for the exact edge that matters.",
-            ],
-          ].map(([number, title, copy]) => (
-            <article className="roster-item reveal" key={number}>
-              <span className="mono">{number}</span>
-              <div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </div>
-            </article>
-          ))}
+          {rosterRoles.map((role) => {
+            const Icon = role.icon;
+            return (
+              <article className="roster-item reveal" key={role.title}>
+                <div className="roster-icon-wrap" aria-hidden="true">
+                  <Icon size={20} strokeWidth={1.7} />
+                </div>
+                <div className="roster-content">
+                  <div className="roster-tag mono">{role.tag}</div>
+                  <h3>{role.title}</h3>
+                  <p>{role.copy}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
       <RouteBridge

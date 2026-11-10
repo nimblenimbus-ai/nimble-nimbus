@@ -192,14 +192,17 @@ export default function Home() {
                 uncertainty is highest.
               </p>
             </div>
-            <div className="path-list">
-              {pathSteps.map(([number, title, description]) => (
+            <div className="path-grid">
+              {pathSteps.map(({ tag, title, description }) => (
                 <div
-                  className="path-step reveal"
-                  key={number}
-                  data-testid={`item-path-${number}`}
+                  className="path-card reveal"
+                  key={title}
+                  data-testid={`item-path-${title.toLowerCase()}`}
                 >
-                  <span className="path-step-index mono">{number}</span>
+                  <div className="path-card-meta">
+                    <span className="path-tag mono">{tag}</span>
+                    <span className="path-crosshair mono" aria-hidden="true">+</span>
+                  </div>
                   <h3>{title}</h3>
                   <p>{description}</p>
                 </div>

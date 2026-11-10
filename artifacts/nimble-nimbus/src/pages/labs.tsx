@@ -6,7 +6,7 @@ export default function Labs() {
   return (
     <Shell>
       <PageHero
-        number="02"
+        tag="Discipline // Labs (North)"
         title="Find the"
         emphasis="signal."
         description="Rapid solo discovery and prototyping sprints for the moment when the question is still more valuable than the answer."
@@ -43,24 +43,27 @@ export default function Labs() {
           </div>
           <div className="incubation-line">
             {[
-              [
-                "01",
-                "Frame",
-                "The sharpest version of the problem and the audience who feels it.",
-              ],
-              [
-                "02",
-                "Test",
-                "Fast artifacts that invite a real response instead of a polite opinion.",
-              ],
-              [
-                "03",
-                "Hand off",
-                "A clear next move: build, partner, pause, or let it go.",
-              ],
-            ].map(([number, title, copy]) => (
-              <article className="incubation-item reveal" key={number}>
-                <span className="mono">{number}</span>
+              {
+                tag: "CYCLE // FRAME",
+                title: "Frame",
+                copy: "The sharpest version of the problem and the audience who feels it.",
+              },
+              {
+                tag: "CYCLE // TEST",
+                title: "Test",
+                copy: "Fast artifacts that invite a real response instead of a polite opinion.",
+              },
+              {
+                tag: "CYCLE // HANDOFF",
+                title: "Hand off",
+                copy: "A clear next move: build, partner, pause, or let it go.",
+              },
+            ].map(({ tag, title, copy }) => (
+              <article className="incubation-item reveal" key={title}>
+                <div className="incubation-badge mono">
+                  <span>{tag}</span>
+                  <span className="incubation-arrow" aria-hidden="true">↗</span>
+                </div>
                 <h3>{title}</h3>
                 <p>{copy}</p>
               </article>
