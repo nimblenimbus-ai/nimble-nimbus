@@ -1,4 +1,4 @@
-import { Crosshair, FlaskConical, ArrowUpRight } from "lucide-react";
+import { ScanEye, FlaskConical, ArrowBigRightDash } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
@@ -47,7 +47,7 @@ export default function Labs() {
               {
                 title: "Frame",
                 copy: "The sharpest version of the problem and the audience who feels it.",
-                icon: Crosshair,
+                icon: ScanEye,
               },
               {
                 title: "Test",
@@ -57,7 +57,7 @@ export default function Labs() {
               {
                 title: "Hand off",
                 copy: "A clear next move: build, partner, pause, or let it go.",
-                icon: ArrowUpRight,
+                icon: ArrowBigRightDash,
               },
             ].map(({ title, copy, icon: Icon }) => (
               <article className="incubation-item reveal" key={title}>

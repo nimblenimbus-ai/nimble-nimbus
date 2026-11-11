@@ -1,14 +1,14 @@
-import { Compass, Zap, Target, Sparkles } from "lucide-react";
+import { CloudUpload, Gauge, Eraser, ScanSearch } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
 import { principles } from "@/data/content";
 
-const principleIcons: Record<string, typeof Compass> = {
-  Altitude: Compass,
-  Velocity: Zap,
-  Candor: Target,
-  Care: Sparkles,
+const principleIcons: Record<string, typeof CloudUpload> = {
+  Altitude: CloudUpload,
+  Velocity: Gauge,
+  Candor: Eraser,
+  Care: ScanSearch,
 };
 
 export default function About() {
@@ -55,7 +55,7 @@ export default function About() {
           </p>
           <div className="principles">
             {principles.map(({ title, copy }) => {
-              const Icon = principleIcons[title] ?? Compass;
+              const Icon = principleIcons[title] ?? CloudUpload;
               return (
                 <article className="principle reveal" key={title}>
                   <span className="principle-icon" aria-hidden="true">

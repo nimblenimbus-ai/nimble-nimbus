@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, NotebookPen, Sparkles, X } from "lucide-react";
+import { ArrowUpRight, Cherry, NotebookPen, Waves, X } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
 import { articles, type Article, type PublicationType } from "@/data/content";
 
-const publicationIcons: Record<PublicationType, typeof Sparkles> = {
-  Nibble: Sparkles,
+const publicationIcons: Record<PublicationType, typeof Cherry> = {
+  Nibble: Cherry,
   "Field Note": NotebookPen,
-  "Deep Dive": BookOpen,
+  "Deep Dive": Waves,
 };
 
 export default function Insights() {

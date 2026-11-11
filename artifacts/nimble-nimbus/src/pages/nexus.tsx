@@ -1,4 +1,4 @@
-import { Cpu, Gauge, PenTool, Binary } from "lucide-react";
+import { Wrench, Users, PenTool, UserStar } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
@@ -7,12 +7,12 @@ const rosterRoles = [
   {
     title: "Builders",
     copy: "Technical range for making the first durable version.",
-    icon: Cpu,
+    icon: Wrench,
   },
   {
     title: "Operators",
     copy: "Practical judgment when the product meets the world.",
-    icon: Gauge,
+    icon: Users,
   },
   {
     title: "Storytellers",
@@ -22,7 +22,7 @@ const rosterRoles = [
   {
     title: "Specialists",
     copy: "Deep context for the exact edge that matters.",
-    icon: Binary,
+    icon: UserStar,
   },
 ];
 

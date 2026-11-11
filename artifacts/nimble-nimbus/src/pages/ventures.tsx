@@ -1,4 +1,4 @@
-import { Layers, Cpu, ShieldCheck } from "lucide-react";
+import { GitBranchPlus, Wrench, ChartNoAxesCombined } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
@@ -39,17 +39,17 @@ export default function Ventures() {
               {
                 title: "Shape",
                 copy: "Turn the prototype into a product point of view with edges.",
-                icon: Layers,
+                icon: GitBranchPlus,
               },
               {
                 title: "Make",
                 copy: "Design, engineering, and the unglamorous decisions between them.",
-                icon: Cpu,
+                icon: Wrench,
               },
               {
                 title: "Prove",
                 copy: "Put the MVP in the world and learn what deserves another mile.",
-                icon: ShieldCheck,
+                icon: ChartNoAxesCombined,
               },
             ].map(({ title, copy, icon: Icon }) => (
               <article className="incubation-item reveal" key={title}>
