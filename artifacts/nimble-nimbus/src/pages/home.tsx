@@ -103,9 +103,9 @@ export default function Home() {
               className="hero-title display reveal visible delay-1"
               data-testid="text-hero-title"
             >
-              <span>Make altitude</span>
+              <span>The zero-drag</span>
               <span>
-                for the <em>idea.</em>
+                idea <em>accelerator.</em>
               </span>
             </h1>
             <p
