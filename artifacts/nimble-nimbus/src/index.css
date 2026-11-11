@@ -233,16 +233,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   margin-bottom: 27px;
-  color: var(--accent);
+  color: var(--subtext);
 }
 .eyebrow::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 48px;
+  height: 1px;
   background: var(--display);
-  border-radius: 50%;
 }
 .hero-copy { max-width: 850px; }
 .hero-title {

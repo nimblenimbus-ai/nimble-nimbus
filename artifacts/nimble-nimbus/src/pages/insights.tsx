@@ -30,7 +30,7 @@ export default function Insights() {
   return (
     <Shell>
       <PageHero
-        tag="Knowledge // Field Notes & Nibbles"
+        tag="Insights"
         title="Notes from"
         emphasis="above."
         description="A Knowledge Base & Deep Dives publication for the questions behind the work. Read slowly. Take what is useful."

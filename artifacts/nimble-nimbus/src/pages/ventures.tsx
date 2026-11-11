@@ -7,7 +7,7 @@ export default function Ventures() {
   return (
     <Shell>
       <PageHero
-        tag="Discipline // Ventures (Nova)"
+        tag="Ventures"
         title="Stay for the"
         emphasis="build."
         description="Solution acceleration until an MVP is built, tested, and ready for the kind of attention that makes it stronger."

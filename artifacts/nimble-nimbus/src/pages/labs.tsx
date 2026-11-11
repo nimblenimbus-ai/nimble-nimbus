@@ -7,7 +7,7 @@ export default function Labs() {
   return (
     <Shell>
       <PageHero
-        tag="Discipline // Labs (North)"
+        tag="Labs"
         title="Find what’s"
         emphasis="real."
         description="Rapid solo discovery and prototyping sprints for the moment when the question is still more valuable than the answer."

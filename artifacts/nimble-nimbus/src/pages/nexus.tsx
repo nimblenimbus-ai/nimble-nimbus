@@ -30,7 +30,7 @@ export default function Nexus() {
   return (
     <Shell>
       <PageHero
-        tag="Guild // Talent Orbit"
+        tag="Nexus"
         title="Bring the right"
         emphasis="orbit."
         description="The Talent Syndicate & Partnership layer that brings an idea to life — with the exact people its next chapter needs."
