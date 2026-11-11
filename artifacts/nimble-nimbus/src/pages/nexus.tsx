@@ -5,25 +5,21 @@ import { RouteBridge } from "@/components/layout/route-bridge";
 
 const rosterRoles = [
   {
-    tag: "ROLE // ARCHITECTURE",
     title: "Builders",
     copy: "Technical range for making the first durable version.",
     icon: Cpu,
   },
   {
-    tag: "ROLE // OPERATIONS",
     title: "Operators",
     copy: "Practical judgment when the product meets the world.",
     icon: Gauge,
   },
   {
-    tag: "ROLE // NARRATIVE",
     title: "Storytellers",
     copy: "Language and narrative that make the idea legible.",
     icon: PenTool,
   },
   {
-    tag: "ROLE // SPECIALISTS",
     title: "Specialists",
     copy: "Deep context for the exact edge that matters.",
     icon: Binary,
@@ -61,19 +57,17 @@ export default function Nexus() {
           </div>
         </div>
         <div className="nexus-roster">
-          {rosterRoles.map((role) => {
-            const Icon = role.icon;
-            return (
-              <article className="roster-item reveal" key={role.title}>
-                <div className="taxonomy-eyebrow mono">
-                  <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
-                  <span className="taxonomy-tag">{role.tag}</span>
-                </div>
-                <h3>{role.title}</h3>
-                <p>{role.copy}</p>
-              </article>
-            );
-          })}
+          {rosterRoles.map(({ title, copy, icon: Icon }) => (
+            <article className="roster-item reveal" key={title}>
+              <span className="roster-icon" aria-hidden="true">
+                <Icon size={18} strokeWidth={1.6} />
+              </span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
       <RouteBridge
