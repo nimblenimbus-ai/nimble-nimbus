@@ -649,8 +649,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .sprint-copy strong { display: block; margin-bottom: 18px; color: var(--display); font-family: 'Space Grotesk', var(--app-font-sans); font-size: 30px; letter-spacing: -.07em; line-height: 1; }
 .incubation-line { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-top: 90px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .incubation-item {
-  min-height: 180px;
-  padding: 28px 25px 32px 0;
+  padding: 28px 25px 28px 0;
   border-right: 1px solid var(--line);
   display: grid;
   grid-template-columns: 36px 1fr;

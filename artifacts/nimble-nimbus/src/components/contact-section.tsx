@@ -68,9 +68,9 @@ export function ContactSection() {
           className="contact-heading display reveal"
           data-testid="heading-contact"
         >
-          Have a sharp
+          Ready for
           <br />
-          <em>idea?</em>
+          <em>clear skies?</em>
         </h2>
         <div className="contact-grid">
           <div>
