@@ -8,8 +8,8 @@ export default function Labs() {
     <Shell>
       <PageHero
         tag="Discipline // Labs (North)"
-        title="Find the"
-        emphasis="signal."
+        title="Find what’s"
+        emphasis="real."
         description="Rapid solo discovery and prototyping sprints for the moment when the question is still more valuable than the answer."
       />
       <section
