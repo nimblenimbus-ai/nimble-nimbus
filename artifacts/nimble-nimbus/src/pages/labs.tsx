@@ -19,7 +19,7 @@ export default function Labs() {
         <div className="section-inner">
           <div className="section-kicker reveal">
             <span className="line" aria-hidden="true" />
-            <span className="mono">Labs / Short runway, real signal</span>
+            <span className="mono">Labs // Short runway, real signal</span>
           </div>
           <div className="lab-sprint">
             <div className="sprint-figure reveal" aria-hidden="true">
@@ -76,7 +76,7 @@ export default function Labs() {
       <RouteBridge
         next="/ventures"
         nextLabel="Enter Ventures"
-        label="Next / Solution acceleration until MVP"
+        label="Next // Solution acceleration until MVP"
       />
     </Shell>
   );

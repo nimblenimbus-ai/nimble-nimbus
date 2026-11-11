@@ -45,7 +45,7 @@ export default function Insights() {
               <div className="section-kicker reveal">
                 <span className="line" aria-hidden="true" />
                 <span className="mono">
-                  Latest field note / Thought bubbles worth sharing
+                  Latest field note // Thought bubbles worth sharing
                 </span>
               </div>
               <h2 className="display reveal">
@@ -94,7 +94,7 @@ export default function Insights() {
       <RouteBridge
         next="https://www.linkedin.com/in/wheresjek/"
         nextLabel="Connect"
-        label="Keep the altitude / Have an idea?"
+        label="Keep the altitude // Have an idea?"
       />
       {activeArticle && (
         <div

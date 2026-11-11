@@ -23,7 +23,7 @@ export function SiteFooter() {
         </a>
       </div>
       <span className="footer-note mono" data-testid="text-footer-note">
-        Nimble Nimbus / 2026
+        Nimble Nimbus // 2026
       </span>
     </footer>
   );

@@ -13,7 +13,7 @@ export function PageHero({
   emphasis,
   description,
 }: PageHeroProps) {
-  const kickerLabel = tag ?? (number ? `Nimble Nimbus / ${number}` : "Nimble Nimbus");
+  const kickerLabel = tag ?? (number ? `Nimble Nimbus // ${number}` : "Nimble Nimbus");
   const testId = tag
     ? tag.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
     : (number ?? "hero");

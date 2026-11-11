@@ -74,7 +74,7 @@ export default function About() {
       <RouteBridge
         next="/labs"
         nextLabel="See the Labs"
-        label="Next / Rapid discovery and prototypes"
+        label="Next // Rapid discovery and prototypes"
       />
     </Shell>
   );

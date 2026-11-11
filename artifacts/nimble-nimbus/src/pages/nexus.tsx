@@ -39,7 +39,7 @@ export default function Nexus() {
         <div className="section-inner">
           <div className="editorial-split">
             <span className="editorial-label mono reveal">
-              Nexus / The partnership layer
+              Nexus // The partnership layer
             </span>
             <div className="editorial-copy reveal delay-1">
               <p>
@@ -75,7 +75,7 @@ export default function Nexus() {
       <RouteBridge
         next="/insights"
         nextLabel="Read Insights"
-        label="Next / Knowledge base and deep dives"
+        label="Next // Knowledge base and deep dives"
       />
     </Shell>
   );

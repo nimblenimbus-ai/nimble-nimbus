@@ -62,7 +62,7 @@ export function ContactSection() {
       <div className="section-inner">
         <div className="section-kicker reveal">
           <span className="line" aria-hidden="true" />
-          <span className="mono">Next move / 05</span>
+          <span className="mono">Next move // 05</span>
         </div>
         <h2
           className="contact-heading display reveal"

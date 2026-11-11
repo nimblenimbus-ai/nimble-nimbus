@@ -140,7 +140,7 @@ export default function Home() {
         <div className="section-inner">
           <div className="section-kicker reveal">
             <span className="line" aria-hidden="true" />
-            <span className="mono">The idea lab / Point of view</span>
+            <span className="mono">The idea lab // Point of view</span>
           </div>
           <div className="thesis-layout">
             <div>
@@ -169,7 +169,7 @@ export default function Home() {
             </p>
           </div>
           <div className="route-bridge reveal">
-            <span className="mono">Next / Background & Mission</span>
+            <span className="mono">Next // Background & Mission</span>
             <Link className="text-link mono" href="/about">
               What we do <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
@@ -219,7 +219,7 @@ export default function Home() {
             </div>
           </div>
           <div className="route-bridge reveal">
-            <span className="mono">Next / Background & Mission</span>
+            <span className="mono">Next // Background & Mission</span>
             <Link className="text-link mono" href="/about">
               What we do <ArrowUpRight size={16} aria-hidden="true" />
             </Link>

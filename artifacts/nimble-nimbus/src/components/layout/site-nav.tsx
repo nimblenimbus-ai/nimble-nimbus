@@ -55,7 +55,7 @@ export function SiteNav() {
         data-testid="menu-mobile"
       >
         <span className="mono">
-          Nimble Nimbus / Independent Idea Accelerator Lab
+          Nimble Nimbus // Independent Idea Accelerator Lab
         </span>
         {navItems.map((item) => (
           <Link

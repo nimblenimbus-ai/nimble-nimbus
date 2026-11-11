@@ -16,7 +16,7 @@ export default function Ventures() {
         <div className="section-inner">
           <div className="editorial-split">
             <span className="editorial-label mono reveal">
-              Ventures / Solution acceleration
+              Ventures // Solution acceleration
             </span>
             <div className="editorial-copy reveal delay-1">
               <p>
@@ -75,7 +75,7 @@ export default function Ventures() {
       <RouteBridge
         next="/nexus"
         nextLabel="Meet Nexus"
-        label="Next / Talent syndicate and partnerships"
+        label="Next // Talent syndicate and partnerships"
       />
     </Shell>
   );
