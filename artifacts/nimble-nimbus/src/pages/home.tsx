@@ -145,11 +145,11 @@ export default function Home() {
           <div className="thesis-layout">
             <div>
               <h2 className="section-heading display reveal">
-                The nimble path
+                The&nbsp;nimble path
                 <br />
-                between <em>spark</em>
+                between&nbsp;<em>spark</em>
                 <br />
-                and <em>signal.</em>
+                and&nbsp;<em>signal.</em>
               </h2>
               <div className="thesis-copy reveal delay-1">
                 <p>

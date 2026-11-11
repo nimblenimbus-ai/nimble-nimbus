@@ -400,7 +400,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .section-kicker .line { width: 58px; height: 1px; background: var(--display); opacity: .65; }
 .section-kicker .mono { color: var(--subtext); }
-.section-heading { max-width: 1030px; font-size: clamp(52px, 8.3vw, 120px); line-height: .88; }
+.section-heading { max-width: 1030px; font-size: clamp(46px, 6.8vw, 98px); line-height: .9; }
 .display em, .section-heading em, .page-title em, .hero-title em, .contact-heading em, .path-intro h2 em, .quote-mark em { color: var(--accent); font-style: normal; }
 .blue-field { background: linear-gradient(145deg, var(--canvas-bottom), #1c4d8d); }
 .deep-field { background: var(--canvas-top); }
@@ -436,11 +436,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .thesis-layout {
   display: grid;
-  grid-template-columns: minmax(180px, .7fr) 1fr;
-  gap: 10vw;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr);
+  gap: 6vw;
   align-items: end;
 }
-.thesis-copy { max-width: 420px; margin-top: 110px; color: var(--body); font-size: 15px; line-height: 1.7; }
+.thesis-copy { max-width: 480px; margin-top: clamp(45px, 6vw, 90px); color: var(--body); font-size: 15px; line-height: 1.7; }
 .thesis-copy p { margin: 0 0 22px; }
 .thesis-note {
   max-width: 670px;
