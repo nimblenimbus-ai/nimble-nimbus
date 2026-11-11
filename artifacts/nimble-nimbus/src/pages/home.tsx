@@ -1,11 +1,18 @@
 import { useEffect, useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Compass, Layers, Flame, Network } from "lucide-react";
 import { Link } from "wouter";
 import { NimbusCloud } from "@/components/nimbus-cloud";
 import { HeroRainNav } from "@/components/layout/hero-rain-nav";
 import { Shell } from "@/components/layout/shell";
 import { ContactSection } from "@/components/contact-section";
 import { pathSteps } from "@/data/content";
+
+const pathIcons = {
+  Discover: Compass,
+  Prototype: Layers,
+  Accelerate: Flame,
+  Connect: Network,
+};
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -133,16 +140,16 @@ export default function Home() {
         <div className="section-inner">
           <div className="section-kicker reveal">
             <span className="line" aria-hidden="true" />
-            <span className="mono">The idea lab / Point of view</span>
+            <span className="mono">The idea lab // Point of view</span>
           </div>
           <div className="thesis-layout">
             <div>
               <h2 className="section-heading display reveal">
-                The nimble path
+                The&nbsp;nimble path
                 <br />
-                between <em>spark</em>
+                between&nbsp;<em>spark</em>
                 <br />
-                and <em>signal.</em>
+                and&nbsp;<em>signal.</em>
               </h2>
               <div className="thesis-copy reveal delay-1">
                 <p>
@@ -162,7 +169,7 @@ export default function Home() {
             </p>
           </div>
           <div className="route-bridge reveal">
-            <span className="mono">Next / Background & Mission</span>
+            <span className="mono">Next // Background & Mission</span>
             <Link className="text-link mono" href="/about">
               What we do <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
@@ -193,21 +200,26 @@ export default function Home() {
               </p>
             </div>
             <div className="path-list">
-              {pathSteps.map(([number, title, description]) => (
-                <div
-                  className="path-step reveal"
-                  key={number}
-                  data-testid={`item-path-${number}`}
-                >
-                  <span className="path-step-index mono">{number}</span>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-              ))}
+              {pathSteps.map(({ title, description }) => {
+                const Icon = pathIcons[title as keyof typeof pathIcons] ?? Compass;
+                return (
+                  <div
+                    className="path-step reveal"
+                    key={title}
+                    data-testid={`item-path-${title.toLowerCase()}`}
+                  >
+                    <span className="path-step-icon" aria-hidden="true">
+                      <Icon size={18} strokeWidth={1.6} />
+                    </span>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="route-bridge reveal">
-            <span className="mono">Next / Background & Mission</span>
+            <span className="mono">Next // Background & Mission</span>
             <Link className="text-link mono" href="/about">
               What we do <ArrowUpRight size={16} aria-hidden="true" />
             </Link>

@@ -1,15 +1,23 @@
+import { CloudUpload, Gauge, Eraser, ScanSearch } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
 import { principles } from "@/data/content";
 
+const principleIcons: Record<string, typeof CloudUpload> = {
+  Altitude: CloudUpload,
+  Velocity: Gauge,
+  Candor: Eraser,
+  Care: ScanSearch,
+};
+
 export default function About() {
   return (
     <Shell>
       <PageHero
-        number="01"
-        title="An idea accelerator for"
-        emphasis="clear skies."
+        tag="About"
+        title="Bring ideas to"
+        emphasis="life."
         description="Nimble Nimbus is an independent idea accelerator lab for people with a sharp idea and no appetite for unnecessary ceremony."
       />
       <section
@@ -46,20 +54,27 @@ export default function About() {
             <em>specific.</em>
           </p>
           <div className="principles">
-            {principles.map(([title, copy], index) => (
-              <article className="principle reveal" key={title}>
-                <span className="mono">{`0${index + 1}`}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
+            {principles.map(({ title, copy }) => {
+              const Icon = principleIcons[title] ?? CloudUpload;
+              return (
+                <article className="principle reveal" key={title}>
+                  <span className="principle-icon" aria-hidden="true">
+                    <Icon size={18} strokeWidth={1.6} />
+                  </span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
       <RouteBridge
         next="/labs"
         nextLabel="See the Labs"
-        label="Next / Rapid discovery and prototypes"
+        label="Next // Rapid discovery and prototypes"
       />
     </Shell>
   );

@@ -1,3 +1,4 @@
+import { ScanEye, FlaskConical, ArrowBigRightDash } from "lucide-react";
 import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
@@ -6,9 +7,9 @@ export default function Labs() {
   return (
     <Shell>
       <PageHero
-        number="02"
-        title="Find the"
-        emphasis="signal."
+        tag="Labs"
+        title="Find what’s"
+        emphasis="real."
         description="Rapid solo discovery and prototyping sprints for the moment when the question is still more valuable than the answer."
       />
       <section
@@ -18,7 +19,7 @@ export default function Labs() {
         <div className="section-inner">
           <div className="section-kicker reveal">
             <span className="line" aria-hidden="true" />
-            <span className="mono">Labs / Short runway, real signal</span>
+            <span className="mono">Labs // Short runway, real signal</span>
           </div>
           <div className="lab-sprint">
             <div className="sprint-figure reveal" aria-hidden="true">
@@ -43,26 +44,30 @@ export default function Labs() {
           </div>
           <div className="incubation-line">
             {[
-              [
-                "01",
-                "Frame",
-                "The sharpest version of the problem and the audience who feels it.",
-              ],
-              [
-                "02",
-                "Test",
-                "Fast artifacts that invite a real response instead of a polite opinion.",
-              ],
-              [
-                "03",
-                "Hand off",
-                "A clear next move: build, partner, pause, or let it go.",
-              ],
-            ].map(([number, title, copy]) => (
-              <article className="incubation-item reveal" key={number}>
-                <span className="mono">{number}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
+              {
+                title: "Frame",
+                copy: "The sharpest version of the problem and the audience who feels it.",
+                icon: ScanEye,
+              },
+              {
+                title: "Test",
+                copy: "Fast artifacts that invite a real response instead of a polite opinion.",
+                icon: FlaskConical,
+              },
+              {
+                title: "Hand off",
+                copy: "A clear next move: build, partner, pause, or let it go.",
+                icon: ArrowBigRightDash,
+              },
+            ].map(({ title, copy, icon: Icon }) => (
+              <article className="incubation-item reveal" key={title}>
+                <span className="incubation-icon" aria-hidden="true">
+                  <Icon size={18} strokeWidth={1.6} />
+                </span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -71,7 +76,7 @@ export default function Labs() {
       <RouteBridge
         next="/ventures"
         nextLabel="Enter Ventures"
-        label="Next / Solution acceleration until MVP"
+        label="Next // Solution acceleration until MVP"
       />
     </Shell>
   );
