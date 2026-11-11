@@ -64,8 +64,10 @@ export default function Labs() {
                 <span className="incubation-icon" aria-hidden="true">
                   <Icon size={18} strokeWidth={1.6} />
                 </span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
               </article>
             ))}
           </div>

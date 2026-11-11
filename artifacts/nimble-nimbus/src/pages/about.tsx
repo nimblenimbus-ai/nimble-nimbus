@@ -61,8 +61,10 @@ export default function About() {
                   <span className="principle-icon" aria-hidden="true">
                     <Icon size={18} strokeWidth={1.6} />
                   </span>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </div>
                 </article>
               );
             })}
