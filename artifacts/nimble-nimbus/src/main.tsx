@@ -1,3 +1,4 @@
+// Analytics: Google Tag Manager container (GTM-5MS7NQ2H) initialized in index.html
 import { createRoot } from 'react-dom/client';
 
 import App from './App';
