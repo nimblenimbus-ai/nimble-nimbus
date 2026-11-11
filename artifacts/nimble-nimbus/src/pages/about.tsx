@@ -54,16 +54,15 @@ export default function About() {
             <em>specific.</em>
           </p>
           <div className="principles">
-            {principles.map((item) => {
-              const Icon = principleIcons[item.title] ?? Compass;
+            {principles.map(({ title, copy }) => {
+              const Icon = principleIcons[title] ?? Compass;
               return (
-                <article className="principle reveal" key={item.title}>
-                  <div className="taxonomy-eyebrow mono">
-                    <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
-                    <span className="taxonomy-tag">{item.tag}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                <article className="principle reveal" key={title}>
+                  <span className="principle-icon" aria-hidden="true">
+                    <Icon size={18} strokeWidth={1.6} />
+                  </span>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
                 </article>
               );
             })}

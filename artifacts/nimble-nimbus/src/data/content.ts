@@ -22,58 +22,48 @@ export const navItems = [
 export type NavItem = (typeof navItems)[number];
 
 export interface PathStep {
-  tag: string;
   title: string;
   description: string;
 }
 
 export const pathSteps: readonly PathStep[] = [
   {
-    tag: "FOCUS // DISCOVERY",
     title: "Discover",
     description: "Name the real question before anyone starts decorating the answer.",
   },
   {
-    tag: "FOCUS // PROTOTYPING",
     title: "Prototype",
     description: "Make the smallest convincing thing, then put it in the hands of people who matter.",
   },
   {
-    tag: "FOCUS // ACCELERATION",
     title: "Accelerate",
     description: "Turn battle-tested prototypes into a working MVP and validate with real users.",
   },
   {
-    tag: "FOCUS // NETWORK",
     title: "Connect",
     description: "Bring in the right talent and skills to gain the momentum it deserves.",
   },
 ] as const;
 
 export interface Principle {
-  tag: string;
   title: string;
   copy: string;
 }
 
 export const principles: readonly Principle[] = [
   {
-    tag: "AXIS // PERSPECTIVE",
     title: "Altitude",
     copy: "The useful distance between a bright idea and a better decision.",
   },
   {
-    tag: "AXIS // MOMENTUM",
     title: "Velocity",
     copy: "Forward motion without confusing speed for progress.",
   },
   {
-    tag: "AXIS // TRUTH",
     title: "Candor",
     copy: "A clear read on what is working, what is not, and what to try next.",
   },
   {
-    tag: "AXIS // CRAFT",
     title: "Care",
     copy: "Small details are not ceremony when they change how an idea lands.",
   },

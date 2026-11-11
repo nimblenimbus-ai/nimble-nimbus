@@ -3,12 +3,6 @@ import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
 
-const cycleIcons = {
-  Frame: Crosshair,
-  Test: FlaskConical,
-  "Hand off": ArrowUpRight,
-};
-
 export default function Labs() {
   return (
     <Shell>
@@ -51,33 +45,29 @@ export default function Labs() {
           <div className="incubation-line">
             {[
               {
-                tag: "CYCLE // FRAME",
                 title: "Frame",
                 copy: "The sharpest version of the problem and the audience who feels it.",
+                icon: Crosshair,
               },
               {
-                tag: "CYCLE // TEST",
                 title: "Test",
                 copy: "Fast artifacts that invite a real response instead of a polite opinion.",
+                icon: FlaskConical,
               },
               {
-                tag: "CYCLE // HANDOFF",
                 title: "Hand off",
                 copy: "A clear next move: build, partner, pause, or let it go.",
+                icon: ArrowUpRight,
               },
-            ].map(({ tag, title, copy }) => {
-              const Icon = cycleIcons[title as keyof typeof cycleIcons] ?? Crosshair;
-              return (
-                <article className="incubation-item reveal" key={title}>
-                  <div className="taxonomy-eyebrow mono">
-                    <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
-                    <span className="taxonomy-tag">{tag}</span>
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                </article>
-              );
-            })}
+            ].map(({ title, copy, icon: Icon }) => (
+              <article className="incubation-item reveal" key={title}>
+                <span className="incubation-icon" aria-hidden="true">
+                  <Icon size={18} strokeWidth={1.6} />
+                </span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -199,22 +199,18 @@ export default function Home() {
                 uncertainty is highest.
               </p>
             </div>
-            <div className="path-grid">
-              {pathSteps.map(({ tag, title, description }) => {
+            <div className="path-list">
+              {pathSteps.map(({ title, description }) => {
                 const Icon = pathIcons[title as keyof typeof pathIcons] ?? Compass;
                 return (
                   <div
-                    className="path-card reveal"
+                    className="path-step reveal"
                     key={title}
                     data-testid={`item-path-${title.toLowerCase()}`}
                   >
-                    <div className="path-card-meta">
-                      <div className="taxonomy-eyebrow mono">
-                        <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
-                        <span className="taxonomy-tag">{tag}</span>
-                      </div>
-                      <span className="path-crosshair mono" aria-hidden="true">+</span>
-                    </div>
+                    <span className="path-step-icon" aria-hidden="true">
+                      <Icon size={18} strokeWidth={1.6} />
+                    </span>
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </div>

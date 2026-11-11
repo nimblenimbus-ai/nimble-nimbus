@@ -3,12 +3,6 @@ import { Shell } from "@/components/layout/shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { RouteBridge } from "@/components/layout/route-bridge";
 
-const stageIcons = {
-  Shape: Layers,
-  Make: Cpu,
-  Prove: ShieldCheck,
-};
-
 export default function Ventures() {
   return (
     <Shell>
@@ -42,33 +36,29 @@ export default function Ventures() {
         <div className="incubation-line">
           {[
             {
-              tag: "STAGE // SHAPE",
               title: "Shape",
               copy: "Turn the prototype into a product point of view with edges.",
+              icon: Layers,
             },
             {
-              tag: "STAGE // MAKE",
               title: "Make",
               copy: "Design, engineering, and the unglamorous decisions between them.",
+              icon: Cpu,
             },
             {
-              tag: "STAGE // PROVE",
               title: "Prove",
               copy: "Put the MVP in the world and learn what deserves another mile.",
+              icon: ShieldCheck,
             },
-          ].map(({ tag, title, copy }) => {
-            const Icon = stageIcons[title as keyof typeof stageIcons] ?? Layers;
-            return (
-              <article className="incubation-item reveal" key={title}>
-                <div className="taxonomy-eyebrow mono">
-                  <Icon size={15} strokeWidth={1.8} className="taxonomy-icon" aria-hidden="true" />
-                  <span className="taxonomy-tag">{tag}</span>
-                </div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            );
-          })}
+          ].map(({ title, copy, icon: Icon }) => (
+            <article className="incubation-item reveal" key={title}>
+              <span className="incubation-icon" aria-hidden="true">
+                <Icon size={18} strokeWidth={1.6} />
+              </span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
         </div>
       </section>
       <section className="section quote-band">
