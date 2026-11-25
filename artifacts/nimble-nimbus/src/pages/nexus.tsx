@@ -48,8 +48,8 @@ export default function Nexus() {
               </p>
               <p>
                 Nexus is our trusted network of builders, operators, storytellers,
-                and specialists. We bring people in around a real need, with a
-                clear role and enough context to make a meaningful contribution.
+                and specialists. We pull specialists in when there is an actual
+                gap to fill. Clear scope, full context, no guesswork.
               </p>
               <p className="small-copy">
                 No endless bench. No warm-body staffing. A carefully composed

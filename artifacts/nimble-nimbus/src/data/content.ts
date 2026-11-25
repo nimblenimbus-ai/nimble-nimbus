@@ -41,7 +41,7 @@ export const pathSteps: readonly PathStep[] = [
   },
   {
     title: "Connect",
-    description: "Bring in the right talent and skills to gain the momentum it deserves.",
+    description: "Bring in the right talent and skills to gain momentum.",
   },
 ] as const;
 
@@ -60,8 +60,8 @@ export const principles: readonly Principle[] = [
     copy: "Forward motion without confusing speed for progress.",
   },
   {
-    title: "Candor",
-    copy: "A clear read on what is working, what is not, and what to try next.",
+    title: "Candour",
+    copy: "Straight answers on what works, what doesn't, and what the data tells us to try next.",
   },
   {
     title: "Care",
