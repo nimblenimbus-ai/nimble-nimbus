@@ -123,7 +123,7 @@ export default function Home() {
             Scroll to explore
           </span>
           <span className="hero-meta-right mono">
-            Turning complex problems into working solutions.
+            From messy problem to working software.
             <br />
             Enterprise experience. Startup speed.
           </span>
